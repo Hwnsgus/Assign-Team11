@@ -35,12 +35,12 @@ void Character::takeDamage(int damage) {
 
 void Character::gainExp(int amount) {
 	exp += amount;
-	LogManager::getInstance().addLog(to_string(amount) + " EXP 획득 (현재: " + to_string(experience) + "/100)");
+	LogManager::getInstance().addLog(to_string(amount) + " EXP 획득 (현재: " + to_string(exp) + "/100)");
 
 	// 원래는 레벨업 클래스가 처리하겠지만 임시 검증용
-	if (experience >= 100) {
+	if (exp >= 100) {
 		level++;
-		experience -= 100;
+		exp -= 100;
 		maxHP += 20;
 		attackPower += 5;
 		currentHP = maxHP;
