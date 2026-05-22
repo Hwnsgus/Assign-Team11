@@ -1,38 +1,43 @@
 #pragma once
 #include <string>
 #include <vector>
+#include <map>
 using namespace std;
-
-class Monster;
+class Monster; // 몬스터 클래스 전방 선언
 class Item;
 
 class Character {
-    
 private:
-    std::string name;
+    string name;
+    int level;
     int currentHP;
     int maxHP;
     int attackPower;
-    int experience;
-    int level; //  
-    vector<Item*> inventory; 
+    int defense;
+    int exp;
     int gold;
 
+    // 게임 로그와 몬스터 처치 기록을 관리하기 위한 컨테이너
+    vector<Item*> inventory;
+
 public:
-    Character(string charName);
+    Character(std::string charName);
 
     void takeDamage(int damage);
-    void attack(Monster* target);
-    void useItem(Item* item);
-    void gainExperience(int amount);
+    void gainExp(int amount);
     void gainGold(int amount);
-    string getStatus() const; 
-    
-    void addItem(Item* item);
-    void removeItem(Item* item);
+    void showStatus() const;
 
-    // Getters
-    string getName() const { return name; }
-    int getCurrentHP() const { return currentHP; }
-    int getAttackPower() const { return attackPower; }
+    // 팀원들이 연동할 Getters / Setters
+    std::string getName() const { return name; }
+    int gethp() const { return currentHP; }
+    int getdef() const { return defense; }
+    int getatk() const { return attackPower; }
+
+    void sethp(int hp);
+
+
+    // [아이템 담당 팀원 연동용 인터페이스 가이드]
+    void addItem(Item* item);
+    void useItem(Item* item);
 };
