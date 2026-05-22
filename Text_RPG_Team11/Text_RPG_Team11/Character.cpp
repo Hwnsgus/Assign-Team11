@@ -1,4 +1,5 @@
 #include "Character.h"
+#include "LogManager.h"
 #include <sstream>
 #include<iostream>
 using namespace std;
@@ -13,7 +14,7 @@ Character::Character(string charName) : name(charName){
 	exp = 0;
 	gold = 0;
 
-	LogManger::getInstance().addLog("캐릭터 [" + name + "] 생성 완료! (Lv.1, HP :200, ATK :30");
+	LogManager::getInstance().addLog("캐릭터 [" + name + "] 생성 완료! (Lv.1, HP :200, ATK :30");
 }
 
 void Character::sethp(int hp) {

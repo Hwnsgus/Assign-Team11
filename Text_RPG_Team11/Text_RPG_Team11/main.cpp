@@ -40,6 +40,7 @@ void showMenu(Character& player) {
 int main() {
     srand(static_cast<unsigned int>(time(NULL)));
 
+    //캐릭터 생성
     string name;
     cout << "캐릭터 이름을 입력하세요: ";
     cin >> name;
@@ -64,33 +65,52 @@ int main() {
             system("cls");
             cout << "=== 던전에 진입했습니다! ===\n";
 
-            // ------------------------------------------------------------
-            // TODO: [전투 담당 팀원 연동 영역]
-            // 여기에서 턴제 전투 루프(플레이어 공격 <-> 몬스터 공격)가 실행되어야 함.
-            // ------------------------------------------------------------
+            // 고호진 님 영역: 캐릭터 레벨에 비례한 랜덤 몬스터 스폰 로직이 들어갈 곳
+            Monster* currentMonster = new Slime("초록슬라임", 1);
+            LogManager::getInstance().addLog("[" + currentMonster->getname() + "]이(가) 나타났습니다!");
 
-            // [팀원 코드 호출 테스트] 몬스터가 플레이어를 공격함 (방어력 차감 적용)
+            cout << "=== 전투 시작: " << currentMonster->getname() << " ===\n";
+
+            // ------------------------------------------------------------
+            // TODO: 장정현 님 (턴제 전투 로직 구현 영역)
+            // ------------------------------------------------------------
+            // 예시 가이드:
+            // while(player.gethp() > 0 && currentMonster->gethp() > 0) {
+            //     cout << "1. 공격 | 2. 아이템 사용 : ";
+            //     (플레이어 행동 처리)
+            //     if(currentMonster->gethp() <= 0) break;
+            //     currentMonster->attack(&player); (고호진님 함수 호출)
+            // }
+
+            // 임시 가상 전투 수행 (테스트용)
+
+
             currentMonster->attack(&player);
 
-            cout << "\n[가상 전투 종료] 플레이어가 몬스터를 처치했습니다!\n";
+            cout << "\n[전투 종료 테스트] 플레이어가 몬스터를 처치했습니다!\n";
 
             // ------------------------------------------------------------
-            // TODO: [아이템 담당 팀원 연동 영역]
-            // 기획서: "전투 승리 시 30% 확률로 아이템 획득"
-            // 예시: 
+            // TODO: 강대암 님 (아이템 드롭 연동 영역)
+            // ------------------------------------------------------------
             // int dropChance = rand() % 100;
-            // if(dropChance < 30) { 
-            //     Item* droppedItem = ItemManager::getRandomItem();
-            //     player.addItem(droppedItem);
-            //     LogManager::getInstance().addLog("아이템 획득!");
+            // if(dropChance < 30) {
+            //     // Item* potion = new Potion();
+            //     // player.addItem(potion);
+            //     LogManager::getInstance().addLog("전투 보상으로 아이템을 획득했습니다!");
             // }
+
+            // ------------------------------------------------------------
+            // 보상 및 성장 연동 영역 (지현준 님 gainExp 로직과 결합됨)
             // ------------------------------------------------------------
 
             
             LogManager::getInstance().recordKill(currentMonster->getname());
-            player.gainGold(20);
-            player.gainExperience(50);
 
+
+            player.gainGold(20);
+            player.gainExp(50);
+
+            delete currentMonster; // 메모리 해제 필수
             cout << "\n전투가 끝났습니다. 아무 키나 누르세요.";
             _getch();
         }
@@ -102,7 +122,5 @@ int main() {
             break;
         }
     }
-
-    delete currentMonster;
     return 0;
 }
