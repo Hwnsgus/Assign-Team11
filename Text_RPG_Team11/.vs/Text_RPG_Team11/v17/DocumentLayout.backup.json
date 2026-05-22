@@ -1,9 +1,17 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\git\\Assign-Team11\\Text_RPG_Team11\\",
+  "WorkspaceRootPath": "C:\\Users\\sjmkk\\Documents\\GitHub\\Assign-Team11\\Text_RPG_Team11\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B6ACB6CF-CF96-4940-912A-3215068D04FF}|Text_RPG_Team11\\Text_RPG_Team11.vcxproj|D:\\git\\Assign-Team11\\Text_RPG_Team11\\Text_RPG_Team11\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{B6ACB6CF-CF96-4940-912A-3215068D04FF}|Text_RPG_Team11\\Text_RPG_Team11.vcxproj|C:\\Users\\sjmkk\\Documents\\GitHub\\Assign-Team11\\Text_RPG_Team11\\Text_RPG_Team11\\Monster.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B6ACB6CF-CF96-4940-912A-3215068D04FF}|Text_RPG_Team11\\Text_RPG_Team11.vcxproj|solutionrelative:Text_RPG_Team11\\Monster.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6ACB6CF-CF96-4940-912A-3215068D04FF}|Text_RPG_Team11\\Text_RPG_Team11.vcxproj|C:\\Users\\sjmkk\\Documents\\GitHub\\Assign-Team11\\Text_RPG_Team11\\Text_RPG_Team11\\Monster.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B6ACB6CF-CF96-4940-912A-3215068D04FF}|Text_RPG_Team11\\Text_RPG_Team11.vcxproj|solutionrelative:Text_RPG_Team11\\Monster.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6ACB6CF-CF96-4940-912A-3215068D04FF}|Text_RPG_Team11\\Text_RPG_Team11.vcxproj|C:\\Users\\sjmkk\\Documents\\GitHub\\Assign-Team11\\Text_RPG_Team11\\Text_RPG_Team11\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{B6ACB6CF-CF96-4940-912A-3215068D04FF}|Text_RPG_Team11\\Text_RPG_Team11.vcxproj|solutionrelative:Text_RPG_Team11\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
@@ -19,15 +27,39 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Monster.cpp",
+              "DocumentMoniker": "C:\\Users\\sjmkk\\Documents\\GitHub\\Assign-Team11\\Text_RPG_Team11\\Text_RPG_Team11\\Monster.cpp",
+              "RelativeDocumentMoniker": "Text_RPG_Team11\\Monster.cpp",
+              "ToolTip": "C:\\Users\\sjmkk\\Documents\\GitHub\\Assign-Team11\\Text_RPG_Team11\\Text_RPG_Team11\\Monster.cpp",
+              "RelativeToolTip": "Text_RPG_Team11\\Monster.cpp",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-05-22T03:03:10.164Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Monster.h",
+              "DocumentMoniker": "C:\\Users\\sjmkk\\Documents\\GitHub\\Assign-Team11\\Text_RPG_Team11\\Text_RPG_Team11\\Monster.h",
+              "RelativeDocumentMoniker": "Text_RPG_Team11\\Monster.h",
+              "ToolTip": "C:\\Users\\sjmkk\\Documents\\GitHub\\Assign-Team11\\Text_RPG_Team11\\Text_RPG_Team11\\Monster.h",
+              "RelativeToolTip": "Text_RPG_Team11\\Monster.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-05-22T03:02:53.741Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "main.cpp",
-              "DocumentMoniker": "D:\\git\\Assign-Team11\\Text_RPG_Team11\\Text_RPG_Team11\\main.cpp",
+              "DocumentMoniker": "C:\\Users\\sjmkk\\Documents\\GitHub\\Assign-Team11\\Text_RPG_Team11\\Text_RPG_Team11\\main.cpp",
               "RelativeDocumentMoniker": "Text_RPG_Team11\\main.cpp",
-              "ToolTip": "D:\\git\\Assign-Team11\\Text_RPG_Team11\\Text_RPG_Team11\\main.cpp",
+              "ToolTip": "C:\\Users\\sjmkk\\Documents\\GitHub\\Assign-Team11\\Text_RPG_Team11\\Text_RPG_Team11\\main.cpp",
               "RelativeToolTip": "Text_RPG_Team11\\main.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-05-21T11:06:55.275Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-21T11:06:55.275Z"
             }
           ]
         }
