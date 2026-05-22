@@ -1,4 +1,5 @@
 #include "Monster.h"
+#include "Character.h"
 
 #include <iostream>
 #include <string>
@@ -67,7 +68,7 @@ public:
 		this->Level = level;
 	}
 
-	virtual void attack(Player* player) = 0;
+	virtual void attack(Character* character) = 0;
 
 
 protected:
@@ -82,17 +83,17 @@ class Slime : public Monster {
 public:
 	Slime(string name, int level) : Monster(name, level) {}
 
-	void attack(Player* player) override;
+	void attack(Character* character) override;
 };
 
-void Slime::attack(Player* player) {
+void Slime::attack(Character* character) {
 
 	int damage;
-	damage = getatk() - player->getdef();
+	damage = getatk() - character->getdef();
 
-	if (getatk() >= player->getdef())
+	if (getatk() >= character->getdef())
 	{
-		player->sethp(player->gethp() - (getatk() - player->getdef()));
+		character->sethp(character->gethp() - (getatk() - character->getdef()));
 	}
 	else
 	{
