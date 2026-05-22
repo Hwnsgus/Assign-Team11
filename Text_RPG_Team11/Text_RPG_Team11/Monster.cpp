@@ -106,7 +106,7 @@ void Slime::attack(Player* player) {
 
 	cout << "\n--- 몬스터 턴 ---\n";
 	cout << "* 점액공격! \n";
-	cout << "전사에게 " << damage << " 데미지! \n";
+	cout << "전사?에게 " << damage << " 데미지! \n";
 	if (getatk() >= player->getdef())
 	{
 		cout << "전사 HP : " << player->gethp() + (getatk() - player->getdef()) << "->" << player->gethp() << endl;
