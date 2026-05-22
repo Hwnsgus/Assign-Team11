@@ -40,13 +40,11 @@ void showMenu(Character& player) {
 int main() {
     srand(static_cast<unsigned int>(time(NULL)));
 
-    // 1단계 : 캐릭터 생성 (담당 구현 완료)
     string name;
     cout << "캐릭터 이름을 입력하세요: ";
     cin >> name;
     Character player(name);
 
-    // 팀원의 몬스터 객체 생성 연습
     Monster* currentMonster = new Slime("초록슬라임", 1);
     LogManager::getInstance().addLog("[" + currentMonster->getname() + "]이(가) 스폰되었습니다.");
 
@@ -88,7 +86,7 @@ int main() {
             // }
             // ------------------------------------------------------------
 
-            // [본인 담당 로그 및 처치 기능 완벽 연동]
+            
             LogManager::getInstance().recordKill(currentMonster->getname());
             player.gainGold(20);
             player.gainExperience(50);
