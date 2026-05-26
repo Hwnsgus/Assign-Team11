@@ -73,3 +73,12 @@ Testing/
 *.user
 *.VC.db
 *.vsidx
+# Visual Studio 개인 설정 및 실시간 DB 파일 통째로 제외
+.vs/
+*.VC.db
+*.VC.opendb
+
+# 빌드 결과물 제외
+x64/
+Debug/
+Release/
