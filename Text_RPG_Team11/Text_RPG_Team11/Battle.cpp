@@ -2,6 +2,8 @@
 #include "Monster.h"
 #include "Character.h"
 #include "LogManager.h"
+#include "HealthPotion.h"
+#include "AttackBoost.h"  
 #include <iostream>
 #include <cstdlib>
 #include <conio.h>
@@ -13,8 +15,10 @@ void Battle::startBattle(Character& character, Monster* monster)
     if (monster == nullptr) return;
 
     bool battleRunning = true;
+    
     LogManager::getInstance().addLog("[" + monster->getname() + "]과(와) 전투를 시작했습니다.");
 
+    AttackBoost* usedBuff = nullptr;
     while (battleRunning)
     {
         system("cls");
@@ -22,13 +26,41 @@ void Battle::startBattle(Character& character, Monster* monster)
         cout << " 몬스터: " << monster->getname() << " (HP: " << monster->gethp() << ")" << endl;
         cout << " 플레이어: " << character.getName() << " (HP: " << character.gethp() << ")" << endl;
         cout << "==========================" << endl;
-        cout << " [Z] 공격하기   [X] 도망치기" << endl;
+        cout << " [Z] 공격하기 [I] 아이템 사용  [X] 도망치기" << endl;
         cout << "==========================" << endl;
         cout << "선택: ";
 
         char choice = _getch();
-
-        if (choice == 'z' || choice == 'Z') {
+        
+        if (choice == 'i' || choice == 'I')
+        {
+            cout << "\n\n[ 인벤토리] \n";
+            character.showInventory();
+            cout <<"사용할 아이템 번호를 입력하세요 (취소: 0): ";
+            int itemIdx;
+            cin >> itemIdx;
+            
+            if (itemIdx == 0)
+            {
+                Item* itemToUse = character.getItem(itemIdx - 1);
+                if (itemToUse == nullptr)
+                {
+                    itemToUse -> use(&character);
+                    LogManager::getInstance().addLog(itemToUse->getItemName() + "을(를) 사용했습니다.");
+                    
+                    if (itemToUse->ItemEffect() == "공격력 증가")
+                    {
+                        usedBuff = (AttackBoost*)itemToUse;
+                    }else
+                    {
+                        delete itemToUse;
+                    }
+                }
+            }
+            continue;
+        }
+        
+        else if (choice == 'z' || choice == 'Z') {
             // 1. 플레이어의 선제 공격
             int damage = character.getatk();
             monster->sethp(monster->gethp() - damage);
@@ -51,9 +83,9 @@ void Battle::startBattle(Character& character, Monster* monster)
                 int itemChance = rand() % 100;
                 if (itemChance < 30)
                 {
-                    cout << "[도전 성공] 보상 아이템을 획득했습니다!" << endl;
-                    LogManager::getInstance().addLog("전투 보상으로 전리품 아이템을 획득함.");
-                    // player.addItem(...); 
+                    Item* dropItem = (rand() % 2 == 0) ? (Item*)new HealthPotion() : (Item*)new AttackBoost();
+                    character.addItem(dropItem); 
+                    cout << "🎁 전리품 발견: " << dropItem->getItemName() << " 획득!\n";
                 }
                 else
                 {
@@ -86,5 +118,10 @@ void Battle::startBattle(Character& character, Monster* monster)
             _getch();
             break;
         }
+     
+    }
+    if (usedBuff != nullptr) {
+        usedBuff->removeEffectAfterBattle(&character);
+        delete usedBuff;
     }
 }
