@@ -3,7 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35219.272
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Text_RPG_Team11", "Text_RPG_Team11\Text_RPG_Team11.vcxproj", "{8185F834-09D5-41F0-8E22-426748F50BB5}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Text_RPG_Team11", "Text_RPG_Team11\Text_RPG_Team11.vcxproj", "{B6ACB6CF-CF96-4940-912A-3215068D04FF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4E0F457E-06FE-4D0C-84B5-263C9062D065}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\..\OneDrive\바탕 화면\AttackBoost.cpp = ..\..\..\..\..\OneDrive\바탕 화면\AttackBoost.cpp
+		..\..\..\..\..\OneDrive\바탕 화면\AttackBoost.h = ..\..\..\..\..\OneDrive\바탕 화면\AttackBoost.h
+		..\..\..\..\..\OneDrive\바탕 화면\HealthPotion.cpp = ..\..\..\..\..\OneDrive\바탕 화면\HealthPotion.cpp
+		..\..\..\..\..\OneDrive\바탕 화면\HealthPotion.h = ..\..\..\..\..\OneDrive\바탕 화면\HealthPotion.h
+		..\..\..\..\..\OneDrive\바탕 화면\Item.cpp = ..\..\..\..\..\OneDrive\바탕 화면\Item.cpp
+		..\..\..\..\..\OneDrive\바탕 화면\Item.h = ..\..\..\..\..\OneDrive\바탕 화면\Item.h
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +23,14 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8185F834-09D5-41F0-8E22-426748F50BB5}.Debug|x64.ActiveCfg = Debug|x64
-		{8185F834-09D5-41F0-8E22-426748F50BB5}.Debug|x64.Build.0 = Debug|x64
-		{8185F834-09D5-41F0-8E22-426748F50BB5}.Debug|x86.ActiveCfg = Debug|Win32
-		{8185F834-09D5-41F0-8E22-426748F50BB5}.Debug|x86.Build.0 = Debug|Win32
-		{8185F834-09D5-41F0-8E22-426748F50BB5}.Release|x64.ActiveCfg = Release|x64
-		{8185F834-09D5-41F0-8E22-426748F50BB5}.Release|x64.Build.0 = Release|x64
-		{8185F834-09D5-41F0-8E22-426748F50BB5}.Release|x86.ActiveCfg = Release|Win32
-		{8185F834-09D5-41F0-8E22-426748F50BB5}.Release|x86.Build.0 = Release|Win32
+		{B6ACB6CF-CF96-4940-912A-3215068D04FF}.Debug|x64.ActiveCfg = Debug|x64
+		{B6ACB6CF-CF96-4940-912A-3215068D04FF}.Debug|x64.Build.0 = Debug|x64
+		{B6ACB6CF-CF96-4940-912A-3215068D04FF}.Debug|x86.ActiveCfg = Debug|Win32
+		{B6ACB6CF-CF96-4940-912A-3215068D04FF}.Debug|x86.Build.0 = Debug|Win32
+		{B6ACB6CF-CF96-4940-912A-3215068D04FF}.Release|x64.ActiveCfg = Release|x64
+		{B6ACB6CF-CF96-4940-912A-3215068D04FF}.Release|x64.Build.0 = Release|x64
+		{B6ACB6CF-CF96-4940-912A-3215068D04FF}.Release|x86.ActiveCfg = Release|Win32
+		{B6ACB6CF-CF96-4940-912A-3215068D04FF}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

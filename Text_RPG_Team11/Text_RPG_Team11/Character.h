@@ -35,18 +35,14 @@ public:
     int getatk() const { return attackPower; }
 
     void sethp(int hp);
-<<<<<<< HEAD
-    void setAtk(int atk);
-=======
 
->>>>>>> origin/feature/player
+    void setAtk(int atk);
+
 
     // [아이템 담당 팀원 연동용 인터페이스 가이드]
     void addItem(Item* item);
     void useItem(Item* item);
-<<<<<<< HEAD
+
 };
 
-=======
-};
->>>>>>> origin/feature/player
+
