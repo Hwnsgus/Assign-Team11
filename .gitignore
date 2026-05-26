@@ -1,53 +1,103 @@
-# ===================================================
-# Visual Studio 2022 기본 설정 및 캐시 파일
-# ===================================================
+## =========================================================
+## [필수] Visual Studio 작업용 임시 및 개인 설정 파일 제외
+## =========================================================
 .vs/
+*.suo
 *.user
 *.userosscache
 *.sln.docstates
-*.suo
-*.db
-*.opendb
 *.VC.db
+*.VC.opendb
 
-# ===================================================
-# 빌드 결과물 및 컴파일 부산물 (실행 파일, 디버깅 파일 등)
-# ===================================================
-*.exe
-*.dll
-*.lib
-*.obj
-*.ilk
-*.pdb
-*.iobj
-*.ipdb
-*.exp
-*.tlog
-*.log
-*.idb
-*.res
-
-# ===================================================
-# 빌드 출력 디렉토리
-# ===================================================
-[Dd]ebug/
-[Rr]elease/
+## =========================================================
+## [필수] 빌드 결과물 및 컴파일러 생성 파일 제외
+## =========================================================
 x64/
-x86/
+Debug/
+Release/
+Bin/
+Obj/
+
+<<<<<<< HEAD
+# Precompiled Headers
+*.gch
+*.pch
+
+# Linker files
+*.ilk
+
+# Debugger Files
+*.pdb
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+*.so.*
+
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Build directories
 build/
-bin/
-obj/
-out/
+Build/
+build-*/
 
-# ===================================================
-# 기타 OS 및 에디터 캐시 (팀원 중 다른 환경 사용자를 위해)
-# ===================================================
-# macOS
-.DS_Store
+# CMake generated files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+install_manifest.txt
+compile_commands.json
 
-# Windows
-Thumbs.db
+# Temporary files
+*.tmp
+*.log
+*.bak
+*.swp
 
-# VS Code / Rider (만약 다른 팀원이 사용할 경우)
-.vscode/
-.idea/
+# vcpkg
+vcpkg_installed/
+
+# debug information files
+*.dwo
+
+# test output & cache
+Testing/
+.cache/
+
+.vs/
+*.suo
+*.user
+*.VC.db
+*.vsidx
+# Visual Studio 개인 설정 및 실시간 DB 파일 통째로 제외
+.vs/
+*.VC.db
+*.VC.opendb
+
+# 빌드 결과물 제외
+x64/
+Debug/
+Release/
+=======
+## =========================================================
+## [선택 사항] 프로젝트 관리 파일 충돌 방지
+## =========================================================
+# 팀원들이 .h나 .cpp 파일을 솔루션 탐색기에 새로 등록할 때 
+# 깃 충돌이 너무 자주 발생한다면 아래 2줄의 주석(#)을 지워주세요.
+*.vcxproj.user
