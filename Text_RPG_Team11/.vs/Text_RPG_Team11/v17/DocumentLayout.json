@@ -1,10 +1,38 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\git\\Assign-Team11\\Text_RPG_Team11\\",
+  "WorkspaceRootPath": "C:\\Users\\eodka\\source\\repos\\SptTeamProject\\Assign-Team11\\Text_RPG_Team11\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B6ACB6CF-CF96-4940-912A-3215068D04FF}|Text_RPG_Team11\\Text_RPG_Team11.vcxproj|D:\\git\\Assign-Team11\\Text_RPG_Team11\\Text_RPG_Team11\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{B6ACB6CF-CF96-4940-912A-3215068D04FF}|Text_RPG_Team11\\Text_RPG_Team11.vcxproj|solutionrelative:Text_RPG_Team11\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{B6ACB6CF-CF96-4940-912A-3215068D04FF}|Text_RPG_Team11\\Text_RPG_Team11.vcxproj|C:\\Users\\eodka\\source\\repos\\SptTeamProject\\Assign-Team11\\Text_RPG_Team11\\Text_RPG_Team11\\Item.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B6ACB6CF-CF96-4940-912A-3215068D04FF}|Text_RPG_Team11\\Text_RPG_Team11.vcxproj|solutionrelative:Text_RPG_Team11\\Item.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6ACB6CF-CF96-4940-912A-3215068D04FF}|Text_RPG_Team11\\Text_RPG_Team11.vcxproj|C:\\Users\\eodka\\source\\repos\\SptTeamProject\\Assign-Team11\\Text_RPG_Team11\\Text_RPG_Team11\\Item.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B6ACB6CF-CF96-4940-912A-3215068D04FF}|Text_RPG_Team11\\Text_RPG_Team11.vcxproj|solutionrelative:Text_RPG_Team11\\Item.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6ACB6CF-CF96-4940-912A-3215068D04FF}|Text_RPG_Team11\\Text_RPG_Team11.vcxproj|C:\\Users\\eodka\\source\\repos\\SptTeamProject\\Assign-Team11\\Text_RPG_Team11\\Text_RPG_Team11\\AttackBoost.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B6ACB6CF-CF96-4940-912A-3215068D04FF}|Text_RPG_Team11\\Text_RPG_Team11.vcxproj|solutionrelative:Text_RPG_Team11\\AttackBoost.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6ACB6CF-CF96-4940-912A-3215068D04FF}|Text_RPG_Team11\\Text_RPG_Team11.vcxproj|C:\\Users\\eodka\\source\\repos\\SptTeamProject\\Assign-Team11\\Text_RPG_Team11\\Text_RPG_Team11\\HealthPotion.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B6ACB6CF-CF96-4940-912A-3215068D04FF}|Text_RPG_Team11\\Text_RPG_Team11.vcxproj|solutionrelative:Text_RPG_Team11\\HealthPotion.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6ACB6CF-CF96-4940-912A-3215068D04FF}|Text_RPG_Team11\\Text_RPG_Team11.vcxproj|C:\\Users\\eodka\\source\\repos\\SptTeamProject\\Assign-Team11\\Text_RPG_Team11\\Text_RPG_Team11\\Character.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B6ACB6CF-CF96-4940-912A-3215068D04FF}|Text_RPG_Team11\\Text_RPG_Team11.vcxproj|solutionrelative:Text_RPG_Team11\\Character.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6ACB6CF-CF96-4940-912A-3215068D04FF}|Text_RPG_Team11\\Text_RPG_Team11.vcxproj|C:\\Users\\eodka\\source\\repos\\SptTeamProject\\Assign-Team11\\Text_RPG_Team11\\Text_RPG_Team11\\Monster.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B6ACB6CF-CF96-4940-912A-3215068D04FF}|Text_RPG_Team11\\Text_RPG_Team11.vcxproj|solutionrelative:Text_RPG_Team11\\Monster.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6ACB6CF-CF96-4940-912A-3215068D04FF}|Text_RPG_Team11\\Text_RPG_Team11.vcxproj|C:\\Users\\eodka\\source\\repos\\SptTeamProject\\Assign-Team11\\Text_RPG_Team11\\Text_RPG_Team11\\AttackBoost.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B6ACB6CF-CF96-4940-912A-3215068D04FF}|Text_RPG_Team11\\Text_RPG_Team11.vcxproj|solutionrelative:Text_RPG_Team11\\AttackBoost.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6ACB6CF-CF96-4940-912A-3215068D04FF}|Text_RPG_Team11\\Text_RPG_Team11.vcxproj|C:\\Users\\eodka\\source\\repos\\SptTeamProject\\Assign-Team11\\Text_RPG_Team11\\Text_RPG_Team11\\HealthPotion.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B6ACB6CF-CF96-4940-912A-3215068D04FF}|Text_RPG_Team11\\Text_RPG_Team11.vcxproj|solutionrelative:Text_RPG_Team11\\HealthPotion.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,15 +47,106 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "main.cpp",
-              "DocumentMoniker": "D:\\git\\Assign-Team11\\Text_RPG_Team11\\Text_RPG_Team11\\main.cpp",
-              "RelativeDocumentMoniker": "Text_RPG_Team11\\main.cpp",
-              "ToolTip": "D:\\git\\Assign-Team11\\Text_RPG_Team11\\Text_RPG_Team11\\main.cpp",
-              "RelativeToolTip": "Text_RPG_Team11\\main.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-05-21T11:06:55.275Z",
+              "Title": "Item.h",
+              "DocumentMoniker": "C:\\Users\\eodka\\source\\repos\\SptTeamProject\\Assign-Team11\\Text_RPG_Team11\\Text_RPG_Team11\\Item.h",
+              "RelativeDocumentMoniker": "Text_RPG_Team11\\Item.h",
+              "ToolTip": "C:\\Users\\eodka\\source\\repos\\SptTeamProject\\Assign-Team11\\Text_RPG_Team11\\Text_RPG_Team11\\Item.h",
+              "RelativeToolTip": "Text_RPG_Team11\\Item.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-05-22T02:35:09.228Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Character.h",
+              "DocumentMoniker": "C:\\Users\\eodka\\source\\repos\\SptTeamProject\\Assign-Team11\\Text_RPG_Team11\\Text_RPG_Team11\\Character.h",
+              "RelativeDocumentMoniker": "Text_RPG_Team11\\Character.h",
+              "ToolTip": "C:\\Users\\eodka\\source\\repos\\SptTeamProject\\Assign-Team11\\Text_RPG_Team11\\Text_RPG_Team11\\Character.h",
+              "RelativeToolTip": "Text_RPG_Team11\\Character.h",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAACUAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-05-26T02:48:13.46Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Monster.h",
+              "DocumentMoniker": "C:\\Users\\eodka\\source\\repos\\SptTeamProject\\Assign-Team11\\Text_RPG_Team11\\Text_RPG_Team11\\Monster.h",
+              "RelativeDocumentMoniker": "Text_RPG_Team11\\Monster.h",
+              "ToolTip": "C:\\Users\\eodka\\source\\repos\\SptTeamProject\\Assign-Team11\\Text_RPG_Team11\\Text_RPG_Team11\\Monster.h",
+              "RelativeToolTip": "Text_RPG_Team11\\Monster.h",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAADIAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-05-26T03:13:08.013Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "HealthPotion.h",
+              "DocumentMoniker": "C:\\Users\\eodka\\source\\repos\\SptTeamProject\\Assign-Team11\\Text_RPG_Team11\\Text_RPG_Team11\\HealthPotion.h",
+              "RelativeDocumentMoniker": "Text_RPG_Team11\\HealthPotion.h",
+              "ToolTip": "C:\\Users\\eodka\\source\\repos\\SptTeamProject\\Assign-Team11\\Text_RPG_Team11\\Text_RPG_Team11\\HealthPotion.h",
+              "RelativeToolTip": "Text_RPG_Team11\\HealthPotion.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-05-22T04:08:52.399Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AttackBoost.h",
+              "DocumentMoniker": "C:\\Users\\eodka\\source\\repos\\SptTeamProject\\Assign-Team11\\Text_RPG_Team11\\Text_RPG_Team11\\AttackBoost.h",
+              "RelativeDocumentMoniker": "Text_RPG_Team11\\AttackBoost.h",
+              "ToolTip": "C:\\Users\\eodka\\source\\repos\\SptTeamProject\\Assign-Team11\\Text_RPG_Team11\\Text_RPG_Team11\\AttackBoost.h",
+              "RelativeToolTip": "Text_RPG_Team11\\AttackBoost.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-05-26T11:05:25.012Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Item.cpp",
+              "DocumentMoniker": "C:\\Users\\eodka\\source\\repos\\SptTeamProject\\Assign-Team11\\Text_RPG_Team11\\Text_RPG_Team11\\Item.cpp",
+              "RelativeDocumentMoniker": "Text_RPG_Team11\\Item.cpp",
+              "ToolTip": "C:\\Users\\eodka\\source\\repos\\SptTeamProject\\Assign-Team11\\Text_RPG_Team11\\Text_RPG_Team11\\Item.cpp",
+              "RelativeToolTip": "Text_RPG_Team11\\Item.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-05-22T02:35:14.119Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AttackBoost.cpp",
+              "DocumentMoniker": "C:\\Users\\eodka\\source\\repos\\SptTeamProject\\Assign-Team11\\Text_RPG_Team11\\Text_RPG_Team11\\AttackBoost.cpp",
+              "RelativeDocumentMoniker": "Text_RPG_Team11\\AttackBoost.cpp",
+              "ToolTip": "C:\\Users\\eodka\\source\\repos\\SptTeamProject\\Assign-Team11\\Text_RPG_Team11\\Text_RPG_Team11\\AttackBoost.cpp",
+              "RelativeToolTip": "Text_RPG_Team11\\AttackBoost.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAiwBMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-05-22T04:09:09.675Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "HealthPotion.cpp",
+              "DocumentMoniker": "C:\\Users\\eodka\\source\\repos\\SptTeamProject\\Assign-Team11\\Text_RPG_Team11\\Text_RPG_Team11\\HealthPotion.cpp",
+              "RelativeDocumentMoniker": "Text_RPG_Team11\\HealthPotion.cpp",
+              "ToolTip": "C:\\Users\\eodka\\source\\repos\\SptTeamProject\\Assign-Team11\\Text_RPG_Team11\\Text_RPG_Team11\\HealthPotion.cpp",
+              "RelativeToolTip": "Text_RPG_Team11\\HealthPotion.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-05-22T04:09:04.807Z"
             }
           ]
         }
