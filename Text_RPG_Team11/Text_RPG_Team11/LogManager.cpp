@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 ﻿#include <iostream>
 #include "LogManager.h"
+=======
+﻿#include "LogManager.h"
+#include <iostream>
+>>>>>>> origin/feature/player
 
 using namespace std;
 
@@ -17,7 +22,11 @@ void LogManager::recordKill(const string& monsterName) {
 	addLog("[" + monsterName + "]을(를) 처치했습니다");
 }
 
+<<<<<<< HEAD
 void LogManager::showLogs() const {
+=======
+void LogManager::showLogs() const{
+>>>>>>> origin/feature/player
 	cout << "\n========================================\n";
 	cout << "               [ 게임 로그 ]            \n";
 	cout << "========================================\n";
@@ -41,8 +50,15 @@ void LogManager::showKillCounts() const {
 		cout << "아직 처치한 몬스터가 없습니다\n";
 	}
 	for (const auto& pair : mosterKillCounts) {
+<<<<<<< HEAD
 		cout << " 💀 " << pair.first << " : 총 " << pair.second << " 마리\n";
 	}
 	cout << "========================================\n";
 
+=======
+		cout << " ■ " << pair.first << " : 총 " << pair.second << " 마리\n";
+	}
+	cout << "========================================\n";
+	
+>>>>>>> origin/feature/player
 }
