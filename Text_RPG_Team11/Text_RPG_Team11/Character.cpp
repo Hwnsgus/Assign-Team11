@@ -1,4 +1,4 @@
-#include "Character.h"
+﻿#include "Character.h"
 #include "LogManager.h"
 #include <sstream>
 #include<iostream>

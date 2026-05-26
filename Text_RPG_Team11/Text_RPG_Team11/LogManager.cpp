@@ -41,7 +41,7 @@ void LogManager::showKillCounts() const {
 		cout << "아직 처치한 몬스터가 없습니다\n";
 	}
 	for (const auto& pair : mosterKillCounts) {
-		cout << " 💀 " << pair.first << " : 총 " << pair.second << " 마리\n";
+		cout << " ■ " << pair.first << " : 총 " << pair.second << " 마리\n";
 	}
 	cout << "========================================\n";
 	
