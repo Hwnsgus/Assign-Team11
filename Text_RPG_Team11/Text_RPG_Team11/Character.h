@@ -3,7 +3,7 @@
 #include <vector>
 #include <map>
 using namespace std;
-class Monster; // ¸ó½ºÅÍ Å¬·¡½º Àü¹æ ¼±¾ð
+class Monster; // ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 class Item;
 
 class Character {
@@ -17,7 +17,7 @@ private:
     int exp;
     int gold;
 
-    // °ÔÀÓ ·Î±×¿Í ¸ó½ºÅÍ Ã³Ä¡ ±â·ÏÀ» °ü¸®ÇÏ±â À§ÇÑ ÄÁÅ×ÀÌ³Ê
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½Î±×¿ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã³Ä¡ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì³ï¿½
     vector<Item*> inventory;
 
 public:
@@ -28,20 +28,21 @@ public:
     void gainGold(int amount);
     void showStatus() const;
 
-    // ÆÀ¿øµéÀÌ ¿¬µ¿ÇÒ Getters / Setters
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Getters / Setters
     std::string getName() const { return name; }
     int gethp() const { return currentHP; }
     int getdef() const { return defense; }
     int getatk() const { return attackPower; }
 
     void sethp(int hp);
-
     void setAtk(int atk);
 
 
-    // [¾ÆÀÌÅÛ ´ã´ç ÆÀ¿ø ¿¬µ¿¿ë ÀÎÅÍÆäÀÌ½º °¡ÀÌµå]
+    // [ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½]
     void addItem(Item* item);
     void useItem(Item* item);
+    void showInventory();
+    Item* getItem(int index);
 
 };
 

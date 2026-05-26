@@ -1,10 +1,9 @@
-
-
-
 #include "Character.h"
 #include "LogManager.h"
 #include <sstream>
 #include<iostream>
+
+#include "Item.h"
 using namespace std;
 
 
@@ -19,7 +18,7 @@ Character::Character(string charName) : name(charName) {
 	gold = 0;
 
 
-	LogManager::getInstance().addLog("Ä³¸¯ÅÍ [" + name + "] »ı¼º ¿Ï·á! (Lv.1, HP :200, ATK :30");
+	LogManager::getInstance().addLog("Ä³ï¿½ï¿½ï¿½ï¿½ [" + name + "] ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½! (Lv.1, HP :200, ATK :30");
 }
 
 
@@ -42,6 +41,36 @@ void Character::setAtk(int atk)
 
 }
 
+void Character::addItem(Item* item)
+{
+	inventory.push_back(item);
+	LogManager::getInstance().addLog(item->getItemName()+"ì„(ë¥¼) íšë“í–ˆìŠµë‹ˆë‹¤!");
+}
+
+void Character::showInventory()
+{
+	if (inventory.empty())
+	{
+		cout << "ì¸ë²¤í† ë¦¬ê°€ ë¹„ì–´ ìˆìŠµë‹ˆë‹¤. \n";
+		return;
+	}
+
+	for (size_t i = 0; i < inventory.size(); i++)
+	{
+		cout << "[" << i+1 << "]" << inventory[i]->getItemName() <<"("<<inventory[i]->ItemEffect()<<")"<<endl;
+	}
+}
+
+Item* Character::getItem(int index)
+{
+	if (index >= 0 && index < inventory.size())
+	{
+		Item* selected = inventory[index];
+		inventory.erase(inventory.begin()+index);
+		return selected;
+	}
+	return nullptr;
+}
 
 void Character::takeDamage(int damage) {
 	currentHP -= damage;
@@ -51,9 +80,9 @@ void Character::takeDamage(int damage) {
 void Character::gainExp(int amount) {
 	exp += amount;
 
-	LogManager::getInstance().addLog(to_string(amount) + " EXP È¹µæ (ÇöÀç: " + to_string(exp) + "/100)");
+	LogManager::getInstance().addLog(to_string(amount) + " EXP È¹ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½: " + to_string(exp) + "/100)");
 
-	// ¿ø·¡´Â ·¹º§¾÷ Å¬·¡½º°¡ Ã³¸®ÇÏ°ÚÁö¸¸ ÀÓ½Ã °ËÁõ¿ë
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½Ï°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ó½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 	if (exp >= 100) {
 		level++;
@@ -62,7 +91,7 @@ void Character::gainExp(int amount) {
 		attackPower += 5;
 		currentHP = maxHP;
 
-		LogManager::getInstance().addLog("¡Ú LEVEL UP! ÇöÀç ·¹º§: " + to_string(level));
+		LogManager::getInstance().addLog("ï¿½ï¿½ LEVEL UP! ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½: " + to_string(level));
 
 	}
 }
@@ -70,7 +99,7 @@ void Character::gainExp(int amount) {
 void Character::gainGold(int amount) {
 	gold += amount;
 
-	LogManager::getInstance().addLog(to_string(amount) + " °ñµå È¹µæ!");
+	LogManager::getInstance().addLog(to_string(amount) + " ï¿½ï¿½ï¿½ È¹ï¿½ï¿½!");
 
 }
 
@@ -78,16 +107,15 @@ void Character::gainGold(int amount) {
 void Character::showStatus() const {
 	cout << "\n========================================\n"
 
-		<< " [" << name << " ÀÇ »óÅÂ]\n"
-		<< " ·¹º§   : " << level << " (ÃÖ´ë 10)\n"
-		<< " Ã¼·Â   : " << currentHP << " / " << maxHP << "\n"
-		<< " °ø°İ·Â : " << attackPower << "\n"
-		<< " °æÇèÄ¡ : " << exp << " / 100\n"
-		<< " °ñµå   : " << gold << " G\n"
+		<< " [" << name << " ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½]\n"
+		<< " ï¿½ï¿½ï¿½ï¿½   : " << level << " (ï¿½Ö´ï¿½ 10)\n"
+		<< " Ã¼ï¿½ï¿½   : " << currentHP << " / " << maxHP << "\n"
+		<< " ï¿½ï¿½ï¿½İ·ï¿½ : " << attackPower << "\n"
+		<< " ï¿½ï¿½ï¿½ï¿½Ä¡ : " << exp << " / 100\n"
+		<< " ï¿½ï¿½ï¿½   : " << gold << " G\n"
 		<< "========================================\n";
 }
 
-// ¾ÆÀÌÅÛ ´ã´ç ¿¬µ¿ ÇÔ¼ö (ÇöÀç´Â Æ²¸¸ Á¦°ø)
-void Character::addItem(Item* item) { /* ¾ÆÀÌÅÛ ´ã´çÀÚ°¡ ±¸Çö ¿¹Á¤ */ }
-void Character::useItem(Item* item) { /* ¾ÆÀÌÅÛ ´ã´çÀÚ°¡ ±¸Çö ¿¹Á¤ */ }
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½ Æ²ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
+void Character::useItem(Item* item) { /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ú°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */ }
 
