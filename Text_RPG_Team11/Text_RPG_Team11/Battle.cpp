@@ -25,10 +25,10 @@ void Battle::startBattle(Character& character, Monster* monster)
         cout << "===== 턴제 전투 모드 =====" << endl;
         cout << " 몬스터: " << monster->getname() << " (HP: " << monster->gethp() << ")" << endl;
         cout << " 플레이어: " << character.getName() << " (HP: " << character.gethp() << ")" << endl;
-        cout << "==========================" << endl;
-        cout << " [Z] 공격하기 [I] 아이템 사용  [X] 도망치기" << endl;
-        cout << "==========================" << endl;
-        cout << "선택: ";
+        //cout << "==========================" << endl;
+        //cout << " [Z] 공격하기 [I] 아이템 사용  [X] 도망치기" << endl;
+        //cout << "==========================" << endl;
+        //cout << "선택: ";
 
         char choice = _getch();
         
@@ -85,7 +85,7 @@ void Battle::startBattle(Character& character, Monster* monster)
                 {
                     Item* dropItem = (rand() % 2 == 0) ? (Item*)new HealthPotion() : (Item*)new AttackBoost();
                     character.addItem(dropItem); 
-                    cout << " 전리품 발견: " << dropItem->getItemName() << " 획득!\n";
+                    cout << "0 전리품 발견: " << dropItem->getItemName() << " 획득!\n";
                 }
                 else
                 {

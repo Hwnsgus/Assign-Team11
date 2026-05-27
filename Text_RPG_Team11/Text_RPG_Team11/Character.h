@@ -48,7 +48,7 @@ public:
     void useItem(Item* item);
     void showInventory();
     Item* getItem(int index);
-
+    int getgold() const { return gold; }
 };
 
 
