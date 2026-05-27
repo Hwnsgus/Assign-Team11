@@ -9,7 +9,7 @@ class Character;
 class AttackBoost : public Item
 {
 protected:
-	int increaseAmount = 10;
+	
 
 public:
 

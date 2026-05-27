@@ -11,7 +11,7 @@ Item::Item(std::string name, string sort,string E_name,int E_value)
 
 }
 
-void Item::GetItemType()
+void Item::ShowItemInfo()
 {
 	//아이템 설명하는 곳
 	cout << "\n" << Item_name << " : " << 

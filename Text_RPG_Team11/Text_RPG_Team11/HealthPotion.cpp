@@ -1,11 +1,11 @@
 #include <iostream>
 
 #include "HealthPotion.h"
+#include "Character.h"
 
-class Character;
 
 
-HealthPotion::HealthPotion():Item("","물약", "HP 회복", 10)
+HealthPotion::HealthPotion():Item("체력 포션","물약", "HP 회복", 50)
 {
 	
 }
@@ -16,7 +16,7 @@ void HealthPotion::use(Character* character)
 
 	
 		int Playerhp;
-		Playerhp = character->gethp() + healAmount;
+		Playerhp = character->gethp() + effect_value;
 		character->sethp(Playerhp);
 		
 	

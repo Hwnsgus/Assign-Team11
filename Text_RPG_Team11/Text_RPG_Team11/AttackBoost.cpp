@@ -7,7 +7,7 @@ class Character;
 
 
 
-AttackBoost::AttackBoost() :Item("공격력 증가 알약", "알약", "공격력 증가", 5)
+AttackBoost::AttackBoost() :Item("공격력 증가 알약", "알약", "공격력 증가", 10)
 {
 
 	
@@ -20,7 +20,7 @@ void AttackBoost::use(Character* character)
 	
 	
 		int PlayerAtk;
-		PlayerAtk = character->getatk() + increaseAmount;
+		PlayerAtk = character->getatk() + effect_value;
 
 		character->setAtk(PlayerAtk);
 		
@@ -35,7 +35,7 @@ void AttackBoost::removeEffectAfterBattle(Character* character)
 {
 	//공격력 증가 버프 제거 함수, 전투 종료 시 한 번 실행해주세요
 	int PlayerAtk;
-	PlayerAtk = character->getatk() - increaseAmount;
+	PlayerAtk = character->getatk() - effect_value;
 	character->setAtk(PlayerAtk);
 }
 

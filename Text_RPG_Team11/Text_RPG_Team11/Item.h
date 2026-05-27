@@ -2,7 +2,7 @@
 #include <string>
 
 
-
+class Character;
 
 
 using std::string;
@@ -24,7 +24,7 @@ public:
 		return Item_name;
 	}
 
-	void GetItemType();
+	void ShowItemInfo();
 
 	string ItemEffect()
 	{
