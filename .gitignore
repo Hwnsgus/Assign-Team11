@@ -18,86 +18,11 @@ Release/
 Bin/
 Obj/
 
-<<<<<<< HEAD
-# Precompiled Headers
-*.gch
-*.pch
-
-# Linker files
-*.ilk
-
-# Debugger Files
-*.pdb
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-*.so.*
-
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
-
-# Build directories
-build/
-Build/
-build-*/
-
-# CMake generated files
-CMakeFiles/
-CMakeCache.txt
-cmake_install.cmake
-Makefile
-install_manifest.txt
-compile_commands.json
-
-# Temporary files
-*.tmp
-*.log
-*.bak
-*.swp
-
-# vcpkg
-vcpkg_installed/
-
-# debug information files
-*.dwo
-
-# test output & cache
-Testing/
-.cache/
-
-.vs/
-*.suo
-*.user
-*.VC.db
-*.vsidx
-# Visual Studio 개인 설정 및 실시간 DB 파일 통째로 제외
-.vs/
-*.VC.db
-*.VC.opendb
-
-# 빌드 결과물 제외
-x64/
-Debug/
-Release/
-=======
 ## =========================================================
 ## [선택 사항] 프로젝트 관리 파일 충돌 방지
 ## =========================================================
 # 팀원들이 .h나 .cpp 파일을 솔루션 탐색기에 새로 등록할 때 
 # 깃 충돌이 너무 자주 발생한다면 아래 2줄의 주석(#)을 지워주세요.
+# *.vcxproj
+# *.vcxproj.filters
 *.vcxproj.user

@@ -46,6 +46,7 @@ void LogManager::showKillCounts() const {
 	}
 
 	for (const auto& pair : monsterKillCounts) {
+
 		cout << " 💀 " << pair.first << " : 총 " << pair.second << " 마리\n";
 	}
 	cout << "========================================\n";
