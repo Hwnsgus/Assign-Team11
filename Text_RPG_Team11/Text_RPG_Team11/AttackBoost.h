@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Item.h"
-#include "Character.h"
+
 
 
 class Character;
@@ -9,15 +9,16 @@ class Character;
 class AttackBoost : public Item
 {
 protected:
-    int increaseAmount = 10;
+	
 
 public:
 
-    AttackBoost();
+	AttackBoost();
 
-    void use(Character* character);
+	void use(Character* character) override;
 
-    void removeEffectAfterBattle(Character* character);
+	void removeEffectAfterBattle(Character* character);
 
 
 };
+

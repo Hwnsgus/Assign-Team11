@@ -1,5 +1,8 @@
 #include "Character.h"
 #include "LogManager.h"
+#include "Item.h"
+
+
 #include <sstream>
 #include<iostream>
 
@@ -16,7 +19,7 @@ Character::Character(string charName) : name(charName) {
 	defense = 30;
 	exp = 0;
 	gold = 0;
-
+	baseAtk = attackPower; 
 
 	LogManager::getInstance().addLog("ĳ���� [" + name + "] ���� �Ϸ�! (Lv.1, HP :200, ATK :30");
 }
@@ -116,6 +119,10 @@ void Character::showStatus() const {
 		<< "========================================\n";
 }
 
-// ������ ��� ���� �Լ� (����� Ʋ�� ����)
-void Character::useItem(Item* item) { /* ������ ����ڰ� ���� ���� */ }
+void Character::addItem(Item* item)
+{
+	inventory.push_back(item);
+}
+void Character::useItem(Item* item) { item->use(this); }
+
 
