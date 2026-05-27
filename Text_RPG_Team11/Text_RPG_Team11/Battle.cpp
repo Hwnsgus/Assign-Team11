@@ -76,11 +76,18 @@ void Battle::startBattle(Character& character, Monster* monster)
 
 			character.gainGold(rewardGold);
 
-			cout << endl;
-			cout << "EXP 50 획득!" << endl;
+			bool levelup = character.gainExp(50);
+			if (levelup) {
+				cout << endl;
+				cout << "---" << endl;
+				cout << " LEVEL UP!" << endl;
+				cout << " 현재 레벨 : " << character.getlevel() << endl;
+				cout << "---" << endl;
+			}
 
-			cout << rewardGold
-				<< " Gold 획득!"
+			cout << "---" << endl
+				<< rewardGold << " Gold 획득!" << endl
+				<< "---" << endl
 				<< endl;
 
 			// ===========================
@@ -150,8 +157,8 @@ void Battle::startBattle(Character& character, Monster* monster)
 			<< monster->gethp()
 			<< endl;
 
-		cout << "========================================"
-			<< endl;
+		cout << "========================================" << endl;
+
 
 		// ===========================
 		// 플레이어 턴
@@ -263,4 +270,7 @@ void Battle::startBattle(Character& character, Monster* monster)
 
 	cout << endl;
 	cout << "전투 종료!" << endl;
+
+	system("pause");
+	system("cls");
 }
