@@ -33,7 +33,7 @@ void Monster::normalAttack(Character* character) {
     int damage = getatk() - character->getdef();
     if (damage <= 0) damage = 1;
     character->sethp(character->gethp() - damage);
-    cout << "* [" << MonsterName << "]의 공격!\n";
+    cout << "* [" << MonsterName << "]의 일반 공격!\n";
     cout << "  " << character->getName() << "에게 " << damage << " 데미지!\n";
 }
 

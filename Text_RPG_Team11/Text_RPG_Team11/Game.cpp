@@ -82,8 +82,16 @@ void Game::run() {
         if (input == '1') {
             system("cls");
 
-            // 1. 랜덤 혹은 기본 몬스터 동적 생성 (고호진님 스폰 데이터 연동)
-            Monster* currentMonster = new Slime("야생 슬라임", 1);
+            // 1. 랜덤 몬스터 동적 스폰 (고호진님 스폰 데이터 연동)
+            int random = rand() % 5;
+            int monsterLevel = player->getlevel();
+            Monster* currentMonster = nullptr;
+
+            if (random == 0)      currentMonster = new Slime("야생 슬라임", monsterLevel);
+            else if (random == 1) currentMonster = new Orc("오크 전사", monsterLevel);
+            else if (random == 2) currentMonster = new Goblin("고블린", monsterLevel);
+            else if (random == 3) currentMonster = new Skeleton("스켈레톤", monsterLevel);
+            else if (random == 4) currentMonster = new Wolf("야생 늑대", monsterLevel);
 
             // 2. 팀원이 추가해 준 Battle 객체 가동 및 위임!
             Battle battleSystem;
