@@ -25,7 +25,7 @@ public:
     Character(std::string charName);
 
     void takeDamage(int damage);
-    void gainExp(int amount);
+    bool gainExp(int amount);
     void gainGold(int amount);
     void showStatus() const;
 
