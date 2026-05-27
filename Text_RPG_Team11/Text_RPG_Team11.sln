@@ -1,9 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.37216.2
+VisualStudioVersion = 17.11.35219.272
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Text_RPG_Team11", "Text_RPG_Team11\Text_RPG_Team11.vcxproj", "{B6ACB6CF-CF96-4940-912A-3215068D04FF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4E0F457E-06FE-4D0C-84B5-263C9062D065}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\..\OneDrive\바탕 화면\AttackBoost.cpp = ..\..\..\..\..\OneDrive\바탕 화면\AttackBoost.cpp
+		..\..\..\..\..\OneDrive\바탕 화면\AttackBoost.h = ..\..\..\..\..\OneDrive\바탕 화면\AttackBoost.h
+		..\..\..\..\..\OneDrive\바탕 화면\HealthPotion.cpp = ..\..\..\..\..\OneDrive\바탕 화면\HealthPotion.cpp
+		..\..\..\..\..\OneDrive\바탕 화면\HealthPotion.h = ..\..\..\..\..\OneDrive\바탕 화면\HealthPotion.h
+		..\..\..\..\..\OneDrive\바탕 화면\Item.cpp = ..\..\..\..\..\OneDrive\바탕 화면\Item.cpp
+		..\..\..\..\..\OneDrive\바탕 화면\Item.h = ..\..\..\..\..\OneDrive\바탕 화면\Item.h
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +36,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {8899E22D-DF0A-40E9-9B35-8853942F170E}
+		SolutionGuid = {0D67D6BE-503D-4C38-94DE-9372ECD1CACD}
 	EndGlobalSection
 EndGlobal
