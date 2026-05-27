@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <string>
 #include <conio.h>
 
@@ -86,17 +86,7 @@ void Game::showMenu()
 
 		cout << " 2. 게임 로그 확인"
 			<< endl;
-            // 1. 랜덤 몬스터 동적 스폰 (고호진님 스폰 데이터 연동)
-            int random = rand() % 5;
-            int monsterLevel = player->getlevel();
-            Monster* currentMonster = nullptr;
-
-            if (random == 0)      currentMonster = new Slime("슬라임", monsterLevel);
-            else if (random == 1) currentMonster = new Orc("오크", monsterLevel);
-            else if (random == 2) currentMonster = new Goblin("고블린", monsterLevel);
-            else if (random == 3) currentMonster = new Skeleton("스켈레톤", monsterLevel);
-            else if (random == 4) currentMonster = new Wolf("늑대", monsterLevel);
-
+ 
 		cout << " 3. 처치 몬스터 통계"
 			<< endl;
 
@@ -270,57 +260,20 @@ void Game::run()
 		{
 			system("cls");
 
-			Monster* currentMonster = nullptr;
 
-			int randomMonster;
+			int random = rand() % 5;
+			int monsterLevel = player->getlevel();
+			
+			Monster * currentMonster = nullptr;
 
-			randomMonster = rand() % 5;
+			string monsterName;
 
-			// ===========================
-			// 랜덤 몬스터 생성
-			// ===========================
-			switch (randomMonster)
-			{
-			case 0:
-				currentMonster =
-					new Slime(
-						"야생 슬라임",
-						player->getlevel()
-					);
-				break;
+			if (random == 0) currentMonster = new Slime("슬라임", monsterLevel);
+			else if (random == 1) currentMonster = new Orc("오크", monsterLevel);
+			else if (random == 2) currentMonster = new Goblin("고블린", monsterLevel);
+			else if (random == 3) currentMonster = new Skeleton("스켈레톤", monsterLevel);
+			else if (random == 4) currentMonster = new Wolf("늑대", monsterLevel);
 
-			case 1:
-				currentMonster =
-					new Goblin(
-						"야생 고블린",
-						player->getlevel()
-					);
-				break;
-
-			case 2:
-				currentMonster =
-					new Orc(
-						"야생 오크",
-						player->getlevel()
-					);
-				break;
-
-			case 3:
-				currentMonster =
-					new Skeleton(
-						"야생 스켈레톤",
-						player->getlevel()
-					);
-				break;
-
-			case 4:
-				currentMonster =
-					new Wolf(
-						"야생 늑대",
-						player->getlevel()
-					);
-				break;
-			}
 
 			// ===========================
 			// 전투 시작
