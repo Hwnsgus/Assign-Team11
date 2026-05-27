@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 
 #include "Item.h"
 #include "Character.h"
@@ -13,12 +13,12 @@ Item::Item(std::string name, string sort,string E_name,int E_value)
 
 void Item::ShowItemInfo()
 {
-	//¾ÆÀÌÅÛ ¼³¸íÇÏ´Â °÷
+	//ì•„ì´í…œ ì„¤ëª…í•˜ëŠ” ê³³
 	cout << "\n" << Item_name << " : " << 
-		effect_name << "ÀÌ " << effect_value << "¸¸Å­ ¹ßµ¿";
-	if (Item_type == "¾Ë¾à")
+		effect_name << "ì´ " << effect_value << "ë§Œí¼ ë°œë™";
+	if (Item_type == "ì•Œì•½")
 	{
-		cout << "\nÀÌ ¾ÆÀÌÅÛÀº ÀüÅõ Á¾·á ½Ã È¿°ú°¡ Á¾·áµË´Ï´Ù!";
+		cout << "\nì´ ì•„ì´í…œì€ ì „íˆ¬ ì¢…ë£Œ ì‹œ íš¨ê³¼ê°€ ì¢…ë£Œë©ë‹ˆë‹¤!";
 	}
 
 }
