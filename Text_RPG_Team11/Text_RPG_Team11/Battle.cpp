@@ -215,18 +215,25 @@ void Battle::startBattle(Character& character, Monster* monster)
 			<< " 데미지!"
 			<< endl;
 
-		// ===========================
 		// 몬스터 사망 체크
-		// ===========================
 		if (monster->gethp() <= 0)
 		{
-			continue;
+			// 스켈레톤이면 부활 기회 줌
+			Skeleton* skel = dynamic_cast<Skeleton*>(monster);
+			if (skel != nullptr)
+			{
+				skel->attack(&character);  // 부활 시도
+				if (monster->gethp() > 0) continue;  // 부활했으면 전투 계속
+			}
+
+			continue;  // 다른 몬스터면 그냥 처치 처리로
 		}
 
-		// ===========================
-		// 몬스터 턴
-		// ===========================
+		// 몬스터 턴 (살아있을 때만)
 		monster->attack(&character);
+
+		
+		
 	}
 
 	cout << endl;
