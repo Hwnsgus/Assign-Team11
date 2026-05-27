@@ -1,17 +1,17 @@
-#pragma once
+ï»¿#pragma once
 
 class Character;
 class Monster;
 
 class Game {
 private:
-    Character* player; // °ÔÀÓ ·çÇÁ µ¿¾È À¯ÁöµÉ ÇÃ·¹ÀÌ¾î °´Ã¼
+    Character* player; // ê²Œì„ ë£¨í”„ ë™ì•ˆ ìœ ì§€ë  í”Œë ˆì´ì–´ ê°ì²´
 
 public:
     Game();
     ~Game();
 
-    void initGame();   // °ÔÀÓ ½ÃÀÛ ¼¼ÆÃ ¹× Ä³¸¯ÅÍ »ı¼º
-    void run();        // ¸ŞÀÎ ·çÇÁ (¸¶À» È­¸é)
-    void showMenu();   // CÅ° ¼³Á¤/·Î±× Ã¢
+    void initGame();   // ê²Œì„ ì‹œì‘ ì„¸íŒ… ë° ìºë¦­í„° ìƒì„±
+    void run();        // ë©”ì¸ ë£¨í”„ (ë§ˆì„ í™”ë©´)
+    void showMenu();   // Cí‚¤ ì„¤ì •/ë¡œê·¸ ì°½
 };
