@@ -13,7 +13,7 @@ Character::Character(string charName) : name(charName) {
 	maxHP = 200;
 	currentHP = 200;
 	attackPower = 30;
-	defense = 30;
+	defense = 10;
 	exp = 0;
 	gold = 0;
 

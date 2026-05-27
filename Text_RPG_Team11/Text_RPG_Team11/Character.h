@@ -39,7 +39,7 @@ public:
     int getlevel() const { return level; }
     int getBaseAtk() const { return baseAtk; } 
     int getgold() const { return gold; }
-
+  
     void sethp(int hp);
     void setAtk(int atk);
 
