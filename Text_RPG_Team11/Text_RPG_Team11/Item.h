@@ -19,7 +19,7 @@ protected:
 public:
 	Item(string name,string sort, string E_name, int E_value);
 
-	string GetItemName()
+	string getItemName()
 	{
 		return Item_name;
 	}
@@ -31,7 +31,7 @@ public:
 		return effect_name;
 	}
 
-	int GetEffectValue()
+	int getEffectValue()
 	{
 		return effect_value;
 	}
