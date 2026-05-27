@@ -261,7 +261,7 @@ void Game::run()
 		{
 			system("cls");
 
-
+			Monster* currentMonster = nullptr;
 			// ===========================
 			// 랜덤 몬스터 생성
 			// ===========================
@@ -299,7 +299,7 @@ void Game::run()
 
 				currentMonster =
 					new BossMonster(
-						"마왕 벨제로드",
+						"마왕 벨제브부",
 						player->getlevel()
 					);
 			}
@@ -421,7 +421,6 @@ void Game::run()
 					cout << "전투를 다시 시작합니다!"
 						<< endl;
 
-					system("pause");
 				}
 
 				// ===========================
@@ -437,7 +436,6 @@ void Game::run()
 					cout << "다음 전투를 진행합니다!"
 						<< endl;
 
-					system("pause");
 				}
 			}
 		}
