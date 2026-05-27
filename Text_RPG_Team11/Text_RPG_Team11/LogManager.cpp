@@ -15,7 +15,7 @@ void LogManager::addLog(const string& message) {
 }
 
 void LogManager::recordKill(const string& monsterName) {
-	mosterKillCounts[monsterName]++;
+	monsterKillCounts[monsterName]++;
 	addLog("[" + monsterName + "]을(를) 처치했습니다");
 }
 
@@ -40,12 +40,12 @@ void LogManager::showKillCounts() const {
 	cout << "\n========================================\n";
 	cout << "           [ 처치한 몬스터 통계 ]         \n";
 	cout << "========================================\n";
-	if (mosterKillCounts.empty())
+	if (monsterKillCounts.empty())
 	{
 		cout << "아직 처치한 몬스터가 없습니다\n";
 	}
-	for (const auto& pair : mosterKillCounts) {
 
+	for (const auto& pair : monsterKillCounts) {
 		cout << " 💀 " << pair.first << " : 총 " << pair.second << " 마리\n";
 	}
 	cout << "========================================\n";

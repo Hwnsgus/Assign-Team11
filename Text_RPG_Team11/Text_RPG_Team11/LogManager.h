@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <string>
 #include <vector>
 #include <map>
@@ -8,7 +8,7 @@ class LogManager {
 
 private:
 	vector<string> eventLog;
-	map<string, int> mosterKillCounts;
+	map<string, int> monsterKillCounts;
 
 public:
 	static LogManager& getInstance();
