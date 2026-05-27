@@ -71,7 +71,7 @@ void Battle::startBattle(Character& character, Monster* monster)
             // 몬스터 처치( HP <= 0 ) 확인
             if (monster->gethp() <= 0)
             {
-                cout << endl << "💀 몬스터 처치 성공!" << endl;
+                cout << endl << " 몬스터 처치 성공!" << endl;
                 LogManager::getInstance().recordKill(monster->getname()); // 처치 로그 및 카운트 누적 (⭐)
 
                 // 보상 경험치 및 골드 지급
@@ -85,7 +85,7 @@ void Battle::startBattle(Character& character, Monster* monster)
                 {
                     Item* dropItem = (rand() % 2 == 0) ? (Item*)new HealthPotion() : (Item*)new AttackBoost();
                     character.addItem(dropItem); 
-                    cout << "🎁 전리품 발견: " << dropItem->getItemName() << " 획득!\n";
+                    cout << " 전리품 발견: " << dropItem->getItemName() << " 획득!\n";
                 }
                 else
                 {
