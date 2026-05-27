@@ -48,6 +48,7 @@ public:
     void useItem(Item* item);
     void showInventory();
     Item* getItem(int index);
+    bool isEmptyInventory() const { return inventory.empty(); }
 
 };
 

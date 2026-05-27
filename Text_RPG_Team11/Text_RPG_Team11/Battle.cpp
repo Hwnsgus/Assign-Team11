@@ -34,7 +34,8 @@ void Battle::startBattle(Character& character, Monster* monster)
         cout << "선택: ";
 
         char choice = _getch();
-        
+
+        //아이템 사용 로직
         if (choice == 'i' || choice == 'I')
         {
             cout << "\n\n[ 인벤토리] \n";
@@ -43,7 +44,7 @@ void Battle::startBattle(Character& character, Monster* monster)
             int itemIdx;
             cin >> itemIdx;
             
-            if (itemIdx == 0)
+            if (itemIdx > 0)
             {
                 Item* itemToUse = character.getItem(itemIdx - 1);
                 if (itemToUse == nullptr)
@@ -63,6 +64,7 @@ void Battle::startBattle(Character& character, Monster* monster)
             continue;
         }
         
+        //플레이어 공격
         else if (choice == 'z' || choice == 'Z') {
             // 1. 플레이어의 선제 공격
             int damage = character.getatk();
@@ -74,7 +76,7 @@ void Battle::startBattle(Character& character, Monster* monster)
 			// 몬스터 처치( HP <= 0 ) 확인
 			if (monster->gethp() <= 0)
 			{
-				cout << endl << "💀 몬스터 처치 성공!" << endl;
+				cout << endl << "몬스터 처치 성공!" << endl;
 				LogManager::getInstance().recordKill(monster->getname()); // 처치 로그 및 카운트 누적 (⭐)
 
 				// 보상 경험치 및 골드 지급
@@ -103,7 +105,7 @@ void Battle::startBattle(Character& character, Monster* monster)
 						break;
 					}
 					character.addItem(reward);
-					cout << "\n" << reward->GetItemName() << " 획득!" << endl;
+					cout << "\n" << reward->getItemName() << " 획득!" << endl;
 				}
 				else
 				{
@@ -123,7 +125,7 @@ void Battle::startBattle(Character& character, Monster* monster)
             // 플레이어 사망 확인
             if (character.gethp() <= 0)
             {
-                cout << endl << "☠️ " << character.getName() << "가 쓰러졌습니다... 게임 오버!" << endl;
+                cout << endl << character.getName() << "가 쓰러졌습니다... 게임 오버!" << endl;
                 LogManager::getInstance().addLog("플레이어가 전사하여 게임이 종료되었습니다.");
                 battleRunning = false;
                 _getch();
@@ -131,7 +133,7 @@ void Battle::startBattle(Character& character, Monster* monster)
             }
         }
         else if (choice == 'x' || choice == 'X') {
-            cout << "\n💨 전투에서 도망쳤습니다!" << endl;
+            cout << "\n 전투에서 도망쳤습니다!" << endl;
             LogManager::getInstance().addLog("전투 중 도망침.");
             battleRunning = false;
             _getch();
