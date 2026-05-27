@@ -8,7 +8,7 @@ class LogManager {
 
 private:
 	vector<string> eventLog;
-	map<string, int> mosterKillCounts;
+	map<string, int> monsterKillCounts;
 
 public:
 	static LogManager& getInstance();

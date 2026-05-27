@@ -13,7 +13,7 @@ void LogManager::addLog(const string& message) {
 }
 
 void LogManager::recordKill(const string& monsterName) {
-	mosterKillCounts[monsterName]++;
+	monsterKillCounts[monsterName]++;
 	addLog("[" + monsterName + "]을(를) 처치했습니다");
 }
 
