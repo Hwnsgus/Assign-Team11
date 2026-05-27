@@ -1,56 +1,170 @@
-#include "Monster.h"
-#include "Character.h" // Ä³¸¯ÅÍÀÇ gethp(), sethp() µîÀ» ¾²±â À§ÇØ Æ÷ÇÔ
+ï»¿#include "Monster.h"
+#include "Character.h"
 #include <cstdlib>
+#include <iostream>
 
 using namespace std;
 
-// ºÎ¸ğ ¸ó½ºÅÍ »ı¼ºÀÚ ±¸Çö
-Monster::Monster(string name, int level) : Name(name), Level(level) {
-    Hp = randomstat(level * 20, level * 30);
-    Atk = randomstat(level * 5, level * 10);
+// ==========================================
+// ë¶€ëª¨ Monster êµ¬í˜„
+// ==========================================
+
+Monster::Monster(string name, int level) : MonsterName(name), MonsterLevel(level) {
+    MonsterHp = randomstat(level * 20, level * 30);
+    MonsterAtk = randomstat(level * 5, level * 10);
 }
 
 int Monster::randomstat(int min, int max) {
     return rand() % (max - min + 1) + min;
 }
 
-// ¸ó½ºÅÍ ¸â¹ö ÇÔ¼öµé ½ÇÁ¦ ±¸Çö
-string Monster::getname() { return Name; }
-int Monster::gethp() { return Hp; }
-int Monster::getatk() { return Atk; }
-int Monster::getlevel() { return Level; }
+string Monster::getname() { return MonsterName; }
+int Monster::gethp() { return MonsterHp; }
+int Monster::getatk() { return MonsterAtk; }
+int Monster::getlevel() { return MonsterLevel; }
 
-void Monster::setname(string name) { this->Name = name; }
-void Monster::sethp(int hp) { this->Hp = hp; }
-void Monster::setatk(int atk) { this->Atk = atk; }
-void Monster::setlevel(int level) { this->Level = level; }
+void Monster::setname(string name) { this->MonsterName = name; }
+void Monster::sethp(int hp) { this->MonsterHp = hp; }
+void Monster::setatk(int atk) { this->MonsterAtk = atk; }
+void Monster::setlevel(int level) { this->MonsterLevel = level; }
 
-
-// ==========================================
-// °íÈ£Áø ´Ô Àü¿ë ¿µ¿ª: °¢ ¸ó½ºÅÍÀÇ °ø°İ ¹æ½Ä ±¸Çö
-// ==========================================
-
-// 1. ½½¶óÀÓÀÇ °ø°İ ·ÎÁ÷ (Character ¹æ¾î·Â Àû¿ë ¿Ïµ¿ ¿Ï·á)
-void Slime::attack(Character* character) {
-    int damage = getatk() - character->getdef();
-    if (damage <= 0) damage = 1; // ÃÖ¼Ò µ¥¹ÌÁö º¸Á¤
-
-    // Ä³¸¯ÅÍ Ã¼·Â Â÷°¨
-    character->sethp(character->gethp() - damage);
-
-    cout << "\n--- ¸ó½ºÅÍ ÅÏ ---\n";
-    cout << "* [" << Name << "]ÀÇ ÂğµæÇÑ Á¡¾× °ø°İ! \n";
-    cout << "¢º " << character->getName() << "¿¡°Ô " << damage << " µ¥¹ÌÁö! \n";
-}
-
-// 2. °íºí¸°ÀÇ °ø°İ ·ÎÁ÷ 
-void Goblin::attack(Character* character) {
+// ê³µí†µ ì¼ë°˜ ê³µê²©
+void Monster::normalAttack(Character* character) {
     int damage = getatk() - character->getdef();
     if (damage <= 0) damage = 1;
+    character->sethp(character->gethp() - damage);
+    cout << "* [" << MonsterName << "]ì˜ ê³µê²©!\n";
+    cout << "  " << character->getName() << "ì—ê²Œ " << damage << " ë°ë¯¸ì§€!\n";
+}
 
+// ==========================================
+// ìŠ¬ë¼ì„ - íŠ¹ìˆ˜ê¸°: í¡ìˆ˜
+// ì¤€ ë°ë¯¸ì§€ë§Œí¼ ìê¸° HPë¥¼ íšŒë³µ
+// ==========================================
+
+void Slime::specialAttack(Character* character) {
+    int damage = getatk() - character->getdef();
+    if (damage <= 0) damage = 1;
     character->sethp(character->gethp() - damage);
 
-    cout << "\n--- ¸ó½ºÅÍ ÅÏ ---\n";
-    cout << "* [" << Name << "]ÀÌ(°¡) ³¯Ä«·Î¿î µĞ±â¸¦ ÈÖµÑ·¶½À´Ï´Ù! \n";
-    cout << "¢º " << character->getName() << "¿¡°Ô " << damage << " µ¥¹ÌÁö! \n";
+    // ì¤€ ë°ë¯¸ì§€ë§Œí¼ HP íšŒë³µ
+    MonsterHp += damage;
+    cout << "* [" << MonsterName << "]ì˜ í¡ìˆ˜!\n";
+    cout << "  " << character->getName() << "ì—ê²Œ " << damage << " ë°ë¯¸ì§€!\n";
+    cout << "  [" << MonsterName << "] HP +" << damage << " íšŒë³µ!\n";
+}
+
+void Slime::attack(Character* character) {
+    cout << "\n--- ëª¬ìŠ¤í„° í„´ ---\n";
+    // 30% í™•ë¥ ë¡œ íŠ¹ìˆ˜ê³µê²©
+    if (rand() % 100 < 30) {
+        specialAttack(character);
+    }
+    else {
+        normalAttack(character);
+    }
+}
+
+// ==========================================
+// ì˜¤í¬ - íŠ¹ìˆ˜ê¸°: ê°•íƒ€
+// ë°ë¯¸ì§€ 1.5ë°°
+// ==========================================
+
+void Orc::specialAttack(Character* character) {
+    int damage = (getatk() - character->getdef()) * 1.5;
+    if (damage <= 0) damage = 2;
+    character->sethp(character->gethp() - damage);
+    cout << "* [" << MonsterName << "]ì˜ ê°•íƒ€!\n";
+    cout << "  " << character->getName() << "ì—ê²Œ " << damage << " ë°ë¯¸ì§€! \n";
+}
+
+void Orc::attack(Character* character) {
+    cout << "\n--- ëª¬ìŠ¤í„° í„´ ---\n";
+    // 25% í™•ë¥ ë¡œ íŠ¹ìˆ˜ê³µê²©
+    if (rand() % 100 < 25) {
+        specialAttack(character);
+    }
+    else {
+        normalAttack(character);
+    }
+}
+
+// ==========================================
+// ê³ ë¸”ë¦° - íŠ¹ìˆ˜ê¸°: ì•„ì´í…œ í›”ì¹˜ê¸°
+// ê³¨ë“œë¥¼ 5~15 í›”ì¹¨
+// ==========================================
+
+void Goblin::specialAttack(Character* character) {
+    int stolen = randomstat(5, 15);
+    //character->loseGold(stolen); // Characterì— loseGold() ì¶”ê°€ í•„ìš”
+    cout << "* [" << MonsterName << "]ì´(ê°€) ê³¨ë“œë¥¼ í›”ì³¤ìŠµë‹ˆë‹¤!\n";
+    cout << "  " << stolen << " ê³¨ë“œë¥¼ ìƒì—ˆìŠµë‹ˆë‹¤!\n";
+}
+
+void Goblin::attack(Character* character) {
+    cout << "\n--- ëª¬ìŠ¤í„° í„´ ---\n";
+    // 35% í™•ë¥ ë¡œ íŠ¹ìˆ˜ê³µê²©
+    if (rand() % 100 < 35) {
+        specialAttack(character);
+    }
+    else {
+        normalAttack(character);
+    }
+}
+
+// ==========================================
+// ìŠ¤ì¼ˆë ˆí†¤ - íŠ¹ìˆ˜ê¸°: ë¶€í™œ
+// HP 0 ì´í•˜ì¼ ë•Œ HP 100% ë¶€í™œ (1íšŒ í•œì •)
+// ==========================================
+
+void Skeleton::specialAttack(Character* character) {
+
+}
+
+void Skeleton::attack(Character* character) {
+    cout << "\n--- ëª¬ìŠ¤í„° í„´ ---\n";
+
+    // HPê°€ 0 ì´í•˜ì´ê³  ì•„ì§ ë¶€í™œ ì•ˆ í–ˆìœ¼ë©´
+    if (!hasRevived && MonsterHp <= 0) {
+        // 30% í™•ë¥ ë¡œ ë¶€í™œ
+        if (rand() % 100 < 30) {
+            MonsterHp = randomstat(MonsterLevel * 20, MonsterLevel * 30); // HP 100% íšŒë³µ
+            hasRevived = true;
+            cout << "* [" << MonsterName << "]ì´(ê°€) ë‹¬ê·¸ë½ëŒ€ë©° ë¶€í™œí–ˆìŠµë‹ˆë‹¤!\n";
+        }
+        else {
+            cout << "* [" << MonsterName << "]ì€(ëŠ”) ë¼›ì¡°ê°ì´ ë˜ì—ˆìŠµë‹ˆë‹¤...\n";
+        }
+        return; // ë¶€í™œ í„´ì—” ê³µê²© ì•ˆ í•¨
+    }
+
+    normalAttack(character);
+}
+
+// ==========================================
+// ëŠ‘ëŒ€ - íŠ¹ìˆ˜ê¸°: ë§ˆêµ¬í• í€´ê¸°
+// 2~5íšŒ ì—°ì†ìœ¼ë¡œ ê³µê²©
+// ==========================================
+
+void Wolf::specialAttack(Character* character) {
+    int hits = randomstat(2, 3); // 2~5íšŒ
+    cout << "* [" << MonsterName << "]ì˜ ë§ˆêµ¬í• í€´ê¸°! (" << hits << "íšŒ)\n";
+    for (int i = 0; i < hits; i++) {
+        int damage = (getatk() - character->getdef()) / 2;
+        if (damage <= 0) damage = 1;
+        character->sethp(character->gethp() - damage);
+        cout << "  " << (i + 1) << "ë²ˆì§¸ í• í€´ê¸°, " << character->getName() << "ì—ê²Œ " << damage << " ë°ë¯¸ì§€!\n";
+        if (character->gethp() <= 0) break; // ì´ë¯¸ ì£½ìœ¼ë©´ ì¤‘ë‹¨
+    }
+}
+
+void Wolf::attack(Character* character) {
+    cout << "\n--- ëª¬ìŠ¤í„° í„´ ---\n";
+    // 30% í™•ë¥ ë¡œ íŠ¹ìˆ˜ê³µê²©
+    if (rand() % 100 < 30) {
+        specialAttack(character);
+    }
+    else {
+        normalAttack(character);
+    }
 }
