@@ -1,9 +1,10 @@
-#pragma once
+﻿#pragma once
 #include <string>
 #include <vector>
 #include <map>
 using namespace std;
-class Monster; // ���� Ŭ���� ���� ����
+
+class Monster; // 몬스터 클래스 전방 선언
 class Item;
 
 class Character {
@@ -17,7 +18,8 @@ private:
     int exp;
     int gold;
 
-    // ���� �α׿� ���� óġ ����� �����ϱ� ���� �����̳�
+
+    // 게임 로그와 몬스터 처치 기록을 관리하기 위한 컨테이너
     vector<Item*> inventory;
 
 public:
@@ -28,7 +30,9 @@ public:
     void gainGold(int amount);
     void showStatus() const;
 
-    // �������� ������ Getters / Setters
+
+    // 팀원들이 연동할 Getters / Setters
+
     std::string getName() const { return name; }
     int gethp() const { return currentHP; }
     int getdef() const { return defense; }
@@ -38,7 +42,8 @@ public:
     void setAtk(int atk);
 
 
-    // [������ ��� ���� ������ �������̽� ���̵�]
+
+    // [아이템 담당 팀원 연동용 인터페이스 가이드]
     void addItem(Item* item);
     void useItem(Item* item);
     void showInventory();
