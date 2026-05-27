@@ -25,3 +25,4 @@ Obj/
 # 깃 충돌이 너무 자주 발생한다면 아래 2줄의 주석(#)을 지워주세요.
 # *.vcxproj
 # *.vcxproj.filters
+*.vcxproj.user
