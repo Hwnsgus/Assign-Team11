@@ -1,18 +1,18 @@
-#include <iostream>
+ï»¿#include <iostream>
 
 #include "HealthPotion.h"
 #include "Character.h"
 
 
 
-HealthPotion::HealthPotion():Item("Ã¼·Â Æ÷¼Ç","¹°¾à", "HP È¸º¹", 50)
+HealthPotion::HealthPotion():Item("ì²´ë ¥ í¬ì…˜","ë¬¼ì•½", "HP íšŒë³µ", 50)
 {
 	
 }
 
 void HealthPotion::use(Character* character)
 {
-	//»ç¿ë ½Ã È¿°ú
+	//ì‚¬ìš© ì‹œ íš¨ê³¼
 
 	
 		int Playerhp;

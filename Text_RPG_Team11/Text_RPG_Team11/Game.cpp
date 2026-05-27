@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <string>
 #include <conio.h>
 
@@ -87,6 +87,16 @@ void Game::showMenu()
 
 		cout << " 2. 게임 로그 확인"
 			<< endl;
+            // 1. 랜덤 몬스터 동적 스폰 (고호진님 스폰 데이터 연동)
+            int random = rand() % 5;
+            int monsterLevel = player->getlevel();
+            Monster* currentMonster = nullptr;
+
+            if (random == 0)      currentMonster = new Slime("슬라임", monsterLevel);
+            else if (random == 1) currentMonster = new Orc("오크", monsterLevel);
+            else if (random == 2) currentMonster = new Goblin("고블린", monsterLevel);
+            else if (random == 3) currentMonster = new Skeleton("스켈레톤", monsterLevel);
+            else if (random == 4) currentMonster = new Wolf("늑대", monsterLevel);
 
 		cout << " 3. 처치 몬스터 통계"
 			<< endl;
