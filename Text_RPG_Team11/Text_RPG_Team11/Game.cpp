@@ -87,11 +87,11 @@ void Game::run() {
             int monsterLevel = player->getlevel();
             Monster* currentMonster = nullptr;
 
-            if (random == 0)      currentMonster = new Slime("야생 슬라임", monsterLevel);
-            else if (random == 1) currentMonster = new Orc("오크 전사", monsterLevel);
+            if (random == 0)      currentMonster = new Slime("슬라임", monsterLevel);
+            else if (random == 1) currentMonster = new Orc("오크", monsterLevel);
             else if (random == 2) currentMonster = new Goblin("고블린", monsterLevel);
             else if (random == 3) currentMonster = new Skeleton("스켈레톤", monsterLevel);
-            else if (random == 4) currentMonster = new Wolf("야생 늑대", monsterLevel);
+            else if (random == 4) currentMonster = new Wolf("늑대", monsterLevel);
 
             // 2. 팀원이 추가해 준 Battle 객체 가동 및 위임!
             Battle battleSystem;
