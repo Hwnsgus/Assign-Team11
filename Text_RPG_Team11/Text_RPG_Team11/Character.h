@@ -36,7 +36,9 @@ public:
     int gethp() const { return currentHP; }
     int getdef() const { return defense; }
     int getatk() const { return attackPower; }
+    int getlevel() const { return level; }
     int getBaseAtk() const { return baseAtk; } 
+    int getgold() const { return gold; }
 
     void sethp(int hp);
     void setAtk(int atk);

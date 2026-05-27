@@ -4,11 +4,11 @@
 #ifndef SHOP_H
 #define SHOP_H
 
-#include "Character.h"
+class Character;
 
-class Shop {
+class Shop
+{
 public:
-	static bool openShop(Character* player);
+	static void openShop(Character* player);
 };
-
 #endif
