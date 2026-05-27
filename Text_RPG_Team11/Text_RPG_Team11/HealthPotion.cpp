@@ -1,14 +1,23 @@
 #include <iostream>
+
 #include "HealthPotion.h"
 #include "Character.h"
 
-HealthPotion::HealthPotion() : Item("ë¹¨ê°„ í¬ì…˜", "ë¬¼ì•½", "HP íšŒë³µ", 50)
+
+
+HealthPotion::HealthPotion():Item("Ã¼·Â Æ÷¼Ç","¹°¾à", "HP È¸º¹", 50)
 {
+	
 }
 
 void HealthPotion::use(Character* character)
 {
-    // í˜„ìž¬ ì²´ë ¥ì— 50(healAmount)ì„ ë”í•¨. (ì´ˆê³¼ íšŒë³µì€ Character::sethp ë‚´ë¶€ì—ì„œ maxHPë¡œ ìž˜ë¼ì¤Œ)
-    int Playerhp = character->gethp() + healAmount;
-    character->sethp(Playerhp);
+	//»ç¿ë ½Ã È¿°ú
+
+	
+		int Playerhp;
+		Playerhp = character->gethp() + effect_value;
+		character->sethp(Playerhp);
+		
+	
 }

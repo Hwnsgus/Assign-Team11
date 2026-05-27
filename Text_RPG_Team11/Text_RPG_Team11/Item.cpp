@@ -1,20 +1,30 @@
 #include <iostream>
+
 #include "Item.h"
 #include "Character.h"
 
-using namespace std;
 
-Item::Item(string name, string sort, string E_name, int E_value)
-    :Item_name(name), Item_type(sort), effect_name(E_name), effect_value(E_value)
+Item::Item(std::string name, string sort,string E_name,int E_value)
+	:Item_name(name),Item_type(sort), effect_name(E_name), effect_value(E_value)
 {
+
+
 }
 
-void Item::getItemType()
+void Item::ShowItemInfo()
 {
-    cout << "\n[" << Item_type << "] " << Item_name << " : "
-         << effect_name << "ì„(ë¥¼) " << effect_value << "ë§Œí¼ ì˜¬ë ¤ì¤ë‹ˆë‹¤.";
-    if (Item_type == "ë¬¼ì•½")
-    {
-        cout << "\n(ì´ ì•„ì´í…œì€ ì „íˆ¬ ì¤‘ ì‚¬ìš© ì‹œ ì¦‰ì‹œ íš¨ê³¼ê°€ ì ìš©ë©ë‹ˆë‹¤!)\n";
-    }
+	//¾ÆÀÌÅÛ ¼³¸íÇÏ´Â °÷
+	cout << "\n" << Item_name << " : " << 
+		effect_name << "ÀÌ " << effect_value << "¸¸Å­ ¹ßµ¿";
+	if (Item_type == "¾Ë¾à")
+	{
+		cout << "\nÀÌ ¾ÆÀÌÅÛÀº ÀüÅõ Á¾·á ½Ã È¿°ú°¡ Á¾·áµË´Ï´Ù!";
+	}
+
 }
+
+
+
+
+
+
