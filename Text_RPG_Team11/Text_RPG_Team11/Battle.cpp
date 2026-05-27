@@ -47,7 +47,7 @@ void Battle::startBattle(Character& character, Monster* monster)
             if (itemIdx > 0)
             {
                 Item* itemToUse = character.getItem(itemIdx - 1);
-                if (itemToUse == nullptr)
+                if (itemToUse != nullptr)
                 {
                     itemToUse -> use(&character);
                     LogManager::getInstance().addLog(itemToUse->getItemName() + "을(를) 사용했습니다.");
@@ -73,16 +73,19 @@ void Battle::startBattle(Character& character, Monster* monster)
 			cout << "\n▶ " << character.getName() << "의 공격! [" << monster->getname() << "]에게 " << damage << " 대미지!" << endl;
 			LogManager::getInstance().addLog(character.getName() + "이(가) " + monster->getname() + "에게 " + to_string(damage) + " 대미지를 입힘.");
 
+
 			// 몬스터 처치( HP <= 0 ) 확인
 			if (monster->gethp() <= 0)
 			{
 				cout << endl << "몬스터 처치 성공!" << endl;
 				LogManager::getInstance().recordKill(monster->getname()); // 처치 로그 및 카운트 누적 (⭐)
 
+
 				// 보상 경험치 및 골드 지급
 				character.gainExp(50);
 				int rewardGold = (rand() % 11) + 10; // 10~20 랜덤 골드
 				character.gainGold(rewardGold);
+
 
 				// 30% 확률로 아이템 획득 (아이템 담당 강대암님 연동 영역)
 				int itemChance = rand() % 100;
