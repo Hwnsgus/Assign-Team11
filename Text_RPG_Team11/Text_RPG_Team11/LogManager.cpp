@@ -1,4 +1,4 @@
-
+﻿
 #include <iostream>
 #include "LogManager.h"
 
@@ -31,7 +31,7 @@ void LogManager::showLogs() const {
 	}
 	for (const auto& log : eventLog)
 	{
-		cout << "▶ " << log << "\n";
+		cout << "-> " << log << "\n";
 	}
 	cout << "========================================\n";
 }
@@ -46,7 +46,7 @@ void LogManager::showKillCounts() const {
 	}
 
 	for (const auto& pair : monsterKillCounts) {
-		cout << " 💀 " << pair.first << " : 총 " << pair.second << " 마리\n";
+		cout << pair.first << " : 총 " << pair.second << " 마리\n";
 	}
 	cout << "========================================\n";
 

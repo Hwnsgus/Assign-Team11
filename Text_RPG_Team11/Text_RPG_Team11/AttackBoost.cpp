@@ -1,21 +1,40 @@
-ï»¿#include <iostream>
+#include <iostream>
+
 #include "AttackBoost.h"
 #include "Character.h"
 
 
-AttackBoost::AttackBoost() : Item("ê³µê²©ë ¥ ì¦í­ì œ", "ë²„í”„", "ê³µê²©ë ¥ ì¦ê°€", 10)
+
+
+AttackBoost::AttackBoost() 
+	:Item("°ø°Ý·Â Áõ°¡ ¾Ë¾à", "¾Ë¾à", "°ø°Ý·Â Áõ°¡", 10)
 {
+
+	
+
 }
 
 void AttackBoost::use(Character* character)
 {
-	// ì˜¤íƒ€ ìˆ˜ì •: setAtk() -> setatk() ë¡œ í†µì¼
-	int PlayerAtk = character->getatk() + increaseAmount;
-	character->setAtk(PlayerAtk); 
+	//»ç¿ëÇßÀ» ¶§ ÀÏ¾î³ª´Â È¿°ú ÀÏ¾î³¯ ÇÔ¼ö
+	
+	
+	character->setAtk(character->getBaseAtk() + effect_value);
+		
+	
+
+	
+
+
 }
 
 void AttackBoost::removeEffectAfterBattle(Character* character)
 {
-	int PlayerAtk = character->getatk() - increaseAmount;
-	character->setAtk(PlayerAtk);
+	//°ø°Ý·Â Áõ°¡ ¹öÇÁ Á¦°Å ÇÔ¼ö, ÀüÅõ Á¾·á ½Ã ÇÑ ¹ø ½ÇÇàÇØÁÖ¼¼¿ä
+	
+	character->setAtk(character->getBaseAtk());
 }
+
+
+
+

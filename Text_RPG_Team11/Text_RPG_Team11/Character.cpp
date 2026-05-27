@@ -1,4 +1,4 @@
-#include "Character.h"
+﻿#include "Character.h"
 #include "LogManager.h"
 #include <sstream>
 #include<iostream>
@@ -18,7 +18,7 @@ Character::Character(string charName) : name(charName) {
 	gold = 0;
 
 
-	LogManager::getInstance().addLog("ĳ���� [" + name + "] ���� �Ϸ�! (Lv.1, HP :200, ATK :30");
+	LogManager::getInstance().addLog("캐릭터 [" + name + "] 생성 완료!(Lv.1, HP :200, ATK : 30");
 }
 
 
@@ -39,12 +39,6 @@ void Character::setAtk(int atk)
 {
 	attackPower = atk;
 
-}
-
-void Character::addItem(Item* item)
-{
-	inventory.push_back(item);
-	LogManager::getInstance().addLog(item->getItemName()+"을(를) 획득했습니다!");
 }
 
 void Character::showInventory()
@@ -80,9 +74,7 @@ void Character::takeDamage(int damage) {
 void Character::gainExp(int amount) {
 	exp += amount;
 
-	LogManager::getInstance().addLog(to_string(amount) + " EXP ȹ�� (����: " + to_string(exp) + "/100)");
-
-	// ������ ������ Ŭ������ ó���ϰ����� �ӽ� ������
+	LogManager::getInstance().addLog(to_string(amount) + " EXP 획득(현재: " + to_string(exp) + "/100)");
 
 	if (exp >= 100) {
 		level++;
@@ -91,7 +83,7 @@ void Character::gainExp(int amount) {
 		attackPower += 5;
 		currentHP = maxHP;
 
-		LogManager::getInstance().addLog("�� LEVEL UP! ���� ����: " + to_string(level));
+		LogManager::getInstance().addLog("LEVEL UP! 현재 레벨: " + to_string(level));
 
 	}
 }
@@ -99,7 +91,7 @@ void Character::gainExp(int amount) {
 void Character::gainGold(int amount) {
 	gold += amount;
 
-	LogManager::getInstance().addLog(to_string(amount) + " ��� ȹ��!");
+	LogManager::getInstance().addLog(to_string(amount) + " 골드 획득!");
 
 }
 
@@ -107,15 +99,20 @@ void Character::gainGold(int amount) {
 void Character::showStatus() const {
 	cout << "\n========================================\n"
 
-		<< " [" << name << " �� ����]\n"
-		<< " ����   : " << level << " (�ִ� 10)\n"
-		<< " ü��   : " << currentHP << " / " << maxHP << "\n"
-		<< " ���ݷ� : " << attackPower << "\n"
-		<< " ����ġ : " << exp << " / 100\n"
-		<< " ���   : " << gold << " G\n"
+		<< " [" << name << " 의 상태]\n"
+		<< "레벨   : " << level << " (최대 10)\n"
+		<< "체력  : " << currentHP << " / " << maxHP << "\n"
+		<< "공격력 : " << attackPower << "\n"
+		<< "경험치 : " << exp << " / 100\n"
+		<< "골드   : " << gold << " G\n"
 		<< "========================================\n";
 }
 
-// ������ ��� ���� �Լ� (����� Ʋ�� ����)
-void Character::useItem(Item* item) { /* ������ ����ڰ� ���� ���� */ }
+// 아이템 추가 (대암님)
 
+void Character::addItem(Item* item)
+{
+	inventory.push_back(item);
+}
+
+void Character::useItem(Item* item) { item->use(this); }
