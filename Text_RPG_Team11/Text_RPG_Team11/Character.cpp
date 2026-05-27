@@ -18,7 +18,7 @@ Character::Character(string charName) : name(charName) {
 	gold = 0;
 
 
-	LogManager::getInstance().addLog("캐릭터 [" + name + "] 생성 완료!(Lv.1, HP :200, ATK : 30");
+	LogManager::getInstance().addLog("캐릭터 [" + name + "] 생성 완료!(Lv.1, HP :200, ATK : 30)");
 }
 
 
@@ -103,6 +103,7 @@ void Character::showStatus() const {
 		<< "레벨   : " << level << " (최대 10)\n"
 		<< "체력  : " << currentHP << " / " << maxHP << "\n"
 		<< "공격력 : " << attackPower << "\n"
+		<< "방어력 : " << defense << "\n"
 		<< "경험치 : " << exp << " / 100\n"
 		<< "골드   : " << gold << " G\n"
 		<< "========================================\n";
