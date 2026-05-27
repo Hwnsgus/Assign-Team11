@@ -13,140 +13,222 @@
 
 using namespace std;
 
+// ===========================
+// 전투 시작
+// ===========================
 void Battle::startBattle(Character& character, Monster* monster)
 {
-	if (monster == nullptr) return;
+	cout << "========================================" << endl;
+	cout << " 전투 시작!" << endl;
+	cout << " ["
+		<< monster->getname()
+		<< "] 등장!"
+		<< endl;
+	cout << "========================================" << endl;
 
-    bool battleRunning = true;
-    
-    LogManager::getInstance().addLog("[" + monster->getname() + "]과(와) 전투를 시작했습니다.");
+	// ===========================
+	// 전투 루프
+	// ===========================
+	while (true)
+	{
+		// ===========================
+		// 플레이어 사망
+		// ===========================
+		if (character.gethp() <= 0)
+		{
+			cout << endl;
+			cout << character.getName()
+				<< " 이(가) 쓰러졌습니다..."
+				<< endl;
 
-    AttackBoost* usedBuff = nullptr;
-    while (battleRunning)
-    {
-        system("cls");
-        cout << "===== 턴제 전투 모드 =====" << endl;
-        cout << " 몬스터: " << monster->getname() << " (HP: " << monster->gethp() << ")" << endl;
-        cout << " 플레이어: " << character.getName() << " (HP: " << character.gethp() << ")" << endl;
-        cout << "==========================" << endl;
-        cout << " [Z] 공격하기 [I] 아이템 사용  [X] 도망치기" << endl;
-        cout << "==========================" << endl;
-        cout << "선택: ";
+			LogManager::getInstance().addLog(
+				character.getName()
+				+ " 사망"
+			);
 
-        char choice = _getch();
+			break;
+		}
 
-        //아이템 사용 로직
-        if (choice == 'i' || choice == 'I')
-        {
-            cout << "\n\n[ 인벤토리] \n";
-            character.showInventory();
-            cout <<"사용할 아이템 번호를 입력하세요 (취소: 0): ";
-            int itemIdx;
-            cin >> itemIdx;
-            
-            if (itemIdx > 0)
-            {
-                Item* itemToUse = character.getItem(itemIdx - 1);
-                if (itemToUse != nullptr)
-                {
-                    itemToUse -> use(&character);
-                    LogManager::getInstance().addLog(itemToUse->getItemName() + "을(를) 사용했습니다.");
-                    
-                    if (itemToUse->ItemEffect() == "공격력 증가")
-                    {
-                        usedBuff = (AttackBoost*)itemToUse;
-                    }else
-                    {
-                        delete itemToUse;
-                    }
-                }
-            }
-            continue;
-        }
-        
-        //플레이어 공격
-        else if (choice == 'z' || choice == 'Z') {
-            // 1. 플레이어의 선제 공격
-            int damage = character.getatk();
-            monster->sethp(monster->gethp() - damage);
+		// ===========================
+		// 몬스터 사망
+		// ===========================
+		if (monster->gethp() <= 0)
+		{
+			cout << endl;
+			cout << "["
+				<< monster->getname()
+				<< "] 처치 완료!"
+				<< endl;
 
-			cout << "\n▶ " << character.getName() << "의 공격! [" << monster->getname() << "]에게 " << damage << " 대미지!" << endl;
-			LogManager::getInstance().addLog(character.getName() + "이(가) " + monster->getname() + "에게 " + to_string(damage) + " 대미지를 입힘.");
+			LogManager::getInstance().recordKill(
+				monster->getname()
+			);
 
+			// ===========================
+			// 보상 지급
+			// ===========================
+			int rewardGold;
 
-			// 몬스터 처치( HP <= 0 ) 확인
-			if (monster->gethp() <= 0)
+			rewardGold = rand() % 11 + 10;
+
+			character.gainExp(50);
+
+			character.gainGold(rewardGold);
+
+			cout << endl;
+			cout << "EXP 50 획득!" << endl;
+
+			cout << rewardGold
+				<< " Gold 획득!"
+				<< endl;
+
+			// ===========================
+			// 30% 확률 아이템 드랍
+			// ===========================
+			int itemChance;
+
+			itemChance = rand() % 100;
+
+			if (itemChance < 30)
 			{
-				cout << endl << "몬스터 처치 성공!" << endl;
-				LogManager::getInstance().recordKill(monster->getname()); // 처치 로그 및 카운트 누적 (⭐)
+				Item* dropItem = nullptr;
 
+				int randomItem;
 
-				// 보상 경험치 및 골드 지급
-				character.gainExp(50);
-				int rewardGold = (rand() % 11) + 10; // 10~20 랜덤 골드
-				character.gainGold(rewardGold);
+				randomItem = rand() % 2;
 
-
-				// 30% 확률로 아이템 획득 (아이템 담당 강대암님 연동 영역)
-				int itemChance = rand() % 100;
-				if (itemChance < 30)
+				// 체력 포션
+				if (randomItem == 0)
 				{
-					cout << "[도전 성공] 보상 아이템을 획득했습니다!" << endl;
-					LogManager::getInstance().addLog("전투 보상으로 전리품 아이템을 획득함.");
-					Item* reward = nullptr;
-					int itemType = rand() % 2;
-					switch (itemType)
-					{
-					case 0:
-						reward = new HealthPotion();
-						break;
-					case 1:
-						reward = new AttackBoost();
-						break;
-					default:
-						reward = new HealthPotion();
-						break;
-					}
-					character.addItem(reward);
-					cout << "\n" << reward->getItemName() << " 획득!" << endl;
+					dropItem = new HealthPotion();
 				}
+
+				// 공격력 증가 알약
 				else
 				{
-					cout << "아이템 획득 실패!" << endl;
+					dropItem = new AttackBoost();
 				}
 
-				battleRunning = false;
-				_getch();
-				break;
+				character.addItem(dropItem);
+
+				cout << endl;
+				cout << "아이템 획득!" << endl;
+
+				cout << "획득 아이템 : "
+					<< dropItem->getItemName()
+					<< endl;
 			}
 
-			// 2. 몬스터의 반격 (고호진님 attack 함수 호출)
-			monster->attack(&character);
-			_getch();
+			// ===========================
+			// 공격력 버프 제거
+			// ===========================
+			character.setAtk(
+				character.getBaseAtk()
+			);
 
+			break;
+		}
 
-            // 플레이어 사망 확인
-            if (character.gethp() <= 0)
-            {
-                cout << endl << character.getName() << "가 쓰러졌습니다... 게임 오버!" << endl;
-                LogManager::getInstance().addLog("플레이어가 전사하여 게임이 종료되었습니다.");
-                battleRunning = false;
-                _getch();
-                break;
-            }
-        }
-        else if (choice == 'x' || choice == 'X') {
-            cout << "\n 전투에서 도망쳤습니다!" << endl;
-            LogManager::getInstance().addLog("전투 중 도망침.");
-            battleRunning = false;
-            _getch();
-            break;
-        }
-     
-    }
-    if (usedBuff != nullptr) {
-        usedBuff->removeEffectAfterBattle(&character);
-        delete usedBuff;
-    }
+		// ===========================
+		// 상태 출력
+		// ===========================
+		cout << endl;
 
+		cout << "========================================"
+			<< endl;
+
+		cout << "["
+			<< character.getName()
+			<< "] HP : "
+			<< character.gethp()
+			<< endl;
+
+		cout << "["
+			<< monster->getname()
+			<< "] HP : "
+			<< monster->gethp()
+			<< endl;
+
+		cout << "========================================"
+			<< endl;
+
+		// ===========================
+		// 플레이어 턴
+		// ===========================
+		cout << endl;
+		cout << "--- 플레이어 턴 ---" << endl;
+
+		// ===========================
+		// 랜덤 아이템 사용
+		// ===========================
+		int useItemChance;
+
+		useItemChance = rand() % 100;
+
+		// 30% 확률 사용
+		if (useItemChance < 30)
+		{
+			Item* selectedItem;
+
+			selectedItem = character.getItem(0);
+
+			if (selectedItem != nullptr)
+			{
+				cout << endl;
+				cout << character.getName()
+					<< " 이(가) 아이템 사용!"
+					<< endl;
+
+				selectedItem->ShowItemInfo();
+
+				character.useItem(selectedItem);
+
+				delete selectedItem;
+			}
+		}
+
+		// ===========================
+		// 플레이어 공격
+		// ===========================
+		int damage;
+
+		damage = character.getatk() - (monster->getlevel() * 2);
+
+		if (damage <= 0)
+		{
+			damage = 1;
+		}
+
+		monster->sethp(
+			monster->gethp() - damage
+		);
+
+		cout << endl;
+
+		cout << character.getName()
+			<< " 의 공격!"
+			<< endl;
+
+		cout << monster->getname()
+			<< " 에게 "
+			<< damage
+			<< " 데미지!"
+			<< endl;
+
+		// ===========================
+		// 몬스터 사망 체크
+		// ===========================
+		if (monster->gethp() <= 0)
+		{
+			continue;
+		}
+
+		// ===========================
+		// 몬스터 턴
+		// ===========================
+		monster->attack(&character);
+	}
+
+	cout << endl;
+	cout << "전투 종료!" << endl;
 }

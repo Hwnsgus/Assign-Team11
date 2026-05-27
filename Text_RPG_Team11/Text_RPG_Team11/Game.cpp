@@ -1,111 +1,387 @@
 ﻿#include <iostream>
 #include <string>
 #include <conio.h>
+
 #include "Game.h"
+
 #include "Character.h"
 #include "Monster.h"
-#include "LogManager.h"
+
 #include "Battle.h"
+#include "Shop.h"
+
+#include "LogManager.h"
+
 using namespace std;
 
-Game::Game() : player(nullptr){}
-
-Game::~Game() {
-	if (player) delete player;
+// ===========================
+// 생성자
+// ===========================
+Game::Game()
+	: player(nullptr)
+{
 }
 
-void Game::initGame() {
-    string name;
-    cout << "========================================\n";
-    cout << "          팀 11 프로젝트 TEXT RPG        \n";
-    cout << "========================================\n";
-    cout << "캐릭터 이름을 입력하세요: ";
-    cin >> name;
-    player = new Character(name);
+// ===========================
+// 소멸자
+// ===========================
+Game::~Game()
+{
+	if (player)
+	{
+		delete player;
+	}
 }
 
-void Game::showMenu() {
-    while (true) {
-        system("cls");
-        cout << "========================================\n";
-        cout << "             [ 설정 / 메뉴 ]            \n";
-        cout << "========================================\n";
-        cout << " 1. 캐릭터 상세 상태 확인\n";
-        cout << " 2. 게임 로그 확인 \n";
-        cout << " 3. 처치한 몬스터 목록 보기 \n";
-        cout << " 0. 창 닫기 (게임으로 돌아가기)\n";
-        cout << "========================================\n";
-        cout << "선택: ";
+// ===========================
+// 게임 초기화
+// ===========================
+void Game::initGame()
+{
+	string name;
 
-        char choice = _getch();
+	system("cls");
 
-        if (choice == '1') {
-            system("cls"); player->showStatus(); _getch();
-        }
-        else if (choice == '2') {
-            system("cls"); LogManager::getInstance().showLogs(); _getch();
-        }
-        else if (choice == '3') {
-            system("cls"); LogManager::getInstance().showKillCounts(); _getch();
-        }
-        else if (choice == '0') {
-            break;
-        }
-    }
+	cout << "========================================"
+		<< endl;
+
+	cout << "          팀 11 프로젝트 TEXT RPG       "
+		<< endl;
+
+	cout << "========================================"
+		<< endl;
+
+	cout << "캐릭터 이름을 입력하세요 : ";
+
+	cin >> name;
+
+	player = new Character(name);
+
+	cout << endl;
+
+	cout << "캐릭터 생성 완료!"	<< endl;
+	
 }
 
-void Game::run() {
-    initGame(); // 캐릭터 생성 실행
+// ===========================
+// 메뉴 출력
+// ===========================
+void Game::showMenu()
+{
+	while (true)
+	{
+		system("cls");
 
-    while (true) {
-        // 플레이어 사망 시 게임 전면 종료
-        if (player->gethp() <= 0) {
-            system("cls");
-            cout << "\n [ GAME OVER ] \n메인 화면으로 돌아갑니다.\n";
-            break;
-        }
+		cout << "========================================"
+			<< endl;
 
-        system("cls");
-        cout << "========================================\n";
-        cout << "         TEXT RPG 메인 월드 (마을)       \n";
-        cout << "========================================\n";
-        cout << " 플레이어: " << player->getName() << " (HP: " << player->gethp() << ")\n";
-        cout << "========================================\n";
-        cout << " [1] 던전 입장 (턴제 전투 돌입)\n";
-        cout << " [C] 설정 및 로그 메뉴 열기\n";
-        cout << " [Q] 게임 완전히 종료\n";
-        cout << "========================================\n";
-        cout << "선택: ";
+		cout << "             [ 설정 / 메뉴 ]            "
+			<< endl;
 
-        char input = _getch();
+		cout << "========================================"
+			<< endl;
 
-        if (input == '1') {
-            system("cls");
+		cout << " 1. 캐릭터 상태 확인"
+			<< endl;
 
-            // 1. 랜덤 몬스터 동적 스폰 (고호진님 스폰 데이터 연동)
-            int random = rand() % 5;
-            int monsterLevel = player->getlevel();
-            Monster* currentMonster = nullptr;
+		cout << " 2. 게임 로그 확인"
+			<< endl;
+ 
+		cout << " 3. 처치 몬스터 통계"
+			<< endl;
 
-            if (random == 0)      currentMonster = new Slime("야생 슬라임", monsterLevel);
-            else if (random == 1) currentMonster = new Orc("오크 전사", monsterLevel);
-            else if (random == 2) currentMonster = new Goblin("고블린", monsterLevel);
-            else if (random == 3) currentMonster = new Skeleton("스켈레톤", monsterLevel);
-            else if (random == 4) currentMonster = new Wolf("야생 늑대", monsterLevel);
+		cout << " 4. 인벤토리 확인"
+			<< endl;
 
-            // 2. 팀원이 추가해 준 Battle 객체 가동 및 위임!
-            Battle battleSystem;
-            battleSystem.startBattle(*player, currentMonster);
+		cout << " 0. 돌아가기"
+			<< endl;
 
-            // 3. 전투 종료 후 메모리 해제
-            delete currentMonster;
-        }
-        else if (input == 'c' || input == 'C') {
-            showMenu(); // 설정 메뉴 진입
-        }
-        else if (input == 'q' || input == 'Q') {
-            cout << "\n게임을 종료합니다.\n";
-            break;
-        }
-    }
+		cout << "========================================"
+			<< endl;
+
+		cout << "선택 : ";
+
+		char choice;
+
+		choice = _getch();
+
+		// ===========================
+		// 상태창
+		// ===========================
+		if (choice == '1')
+		{
+			system("cls");
+
+			player->showStatus();
+
+			system("pause");
+		}
+
+		// ===========================
+		// 로그
+		// ===========================
+		else if (choice == '2')
+		{
+			system("cls");
+
+			LogManager::getInstance().showLogs();
+
+			system("pause");
+		}
+
+		// ===========================
+		// 처치 통계
+		// ===========================
+		else if (choice == '3')
+		{
+			system("cls");
+
+			LogManager::getInstance().showKillCounts();
+
+			system("pause");
+		}
+
+		// ===========================
+		// 인벤토리
+		// ===========================
+		else if (choice == '4')
+		{
+			system("cls");
+
+			player->showInventory();
+
+			system("pause");
+		}
+
+		// ===========================
+		// 종료
+		// ===========================
+		else if (choice == '0')
+		{
+			break;
+		}
+	}
+}
+
+// ===========================
+// 게임 메인 루프
+// ===========================
+void Game::run()
+{
+	// 캐릭터 생성
+	initGame();
+
+	// ===========================
+	// 메인 게임 루프
+	// ===========================
+	while (true)
+	{
+		// ===========================
+		// 플레이어 사망
+		// ===========================
+		if (player->gethp() <= 0)
+		{
+			system("cls");
+
+			cout << endl;
+
+			cout << "========================================"
+				<< endl;
+
+			cout << "              GAME OVER"
+				<< endl;
+
+			cout << "========================================"
+				<< endl;
+
+			cout << player->getName()
+				<< " 이(가) 사망했습니다..."
+				<< endl;
+
+			cout << endl;
+
+			system("pause");
+
+			break;
+		}
+
+		system("cls");
+
+		// ===========================
+		// 메인 화면
+		// ===========================
+		cout << "========================================"
+			<< endl;
+
+		cout << "            TEXT RPG 메인 월드          "
+			<< endl;
+
+		cout << "========================================"
+			<< endl;
+
+		cout << "플레이어 : "
+			<< player->getName()
+			<< endl;
+
+		cout << "현재 HP : "
+			<< player->gethp()
+			<< endl;
+
+		cout << "현재 골드 : "
+			<< player->getgold()
+			<< " G"
+			<< endl;
+
+		cout << "========================================"
+			<< endl;
+
+		cout << "[1] 던전 입장"
+			<< endl;
+
+		cout << "[C] 상태창 / 로그 메뉴"
+			<< endl;
+
+		cout << "[Q] 게임 종료"
+			<< endl;
+
+		cout << "========================================"
+			<< endl;
+
+		cout << "선택 : ";
+
+		char input;
+
+		input = _getch();
+
+		// ===========================
+		// 던전 입장
+		// ===========================
+		if (input == '1')
+		{
+			system("cls");
+
+
+			int random = rand() % 5;
+			int monsterLevel = player->getlevel();
+			
+			Monster * currentMonster = nullptr;
+
+			string monsterName;
+
+			if (random == 0) currentMonster = new Slime("슬라임", monsterLevel);
+			else if (random == 1) currentMonster = new Orc("오크", monsterLevel);
+			else if (random == 2) currentMonster = new Goblin("고블린", monsterLevel);
+			else if (random == 3) currentMonster = new Skeleton("스켈레톤", monsterLevel);
+			else if (random == 4) currentMonster = new Wolf("늑대", monsterLevel);
+
+
+			// ===========================
+			// 전투 시작
+			// ===========================
+			Battle battleSystem;
+
+			battleSystem.startBattle(
+				*player,
+				currentMonster
+			);
+
+			// ===========================
+			// 몬스터 메모리 해제
+			// ===========================
+			delete currentMonster;
+
+			// ===========================
+			// 플레이어 생존 시
+			// 상점 입장 여부 질문
+			// ===========================
+			if (player->gethp() > 0)
+			{
+				char shopChoice;
+
+				cout << endl;
+
+				cout << "========================================"
+					<< endl;
+
+				cout << "상점에 입장하시겠습니까?"
+					<< endl;
+
+				cout << "========================================"
+					<< endl;
+
+				cout << "[Y] 상점 입장"
+					<< endl;
+
+				cout << "[N] 다음 전투 진행"
+					<< endl;
+
+				cout << "========================================"
+					<< endl;
+
+				cout << "선택 : ";
+
+				shopChoice = _getch();
+
+				// ===========================
+				// 상점 입장
+				// ===========================
+				if (shopChoice == 'Y'
+					|| shopChoice == 'y')
+				{
+					Shop::openShop(player);
+
+					cout << endl;
+
+					cout << "상점 이용 완료!"
+						<< endl;
+
+					cout << "전투를 다시 시작합니다!"
+						<< endl;
+
+					system("pause");
+				}
+
+				// ===========================
+				// 상점 스킵
+				// ===========================
+				else
+				{
+					cout << endl;
+
+					cout << "상점을 스킵했습니다!"
+						<< endl;
+
+					cout << "다음 전투를 진행합니다!"
+						<< endl;
+
+					system("pause");
+				}
+			}
+		}
+
+		// ===========================
+		// 메뉴
+		// ===========================
+		else if (input == 'c'
+			|| input == 'C')
+		{
+			showMenu();
+		}
+
+		// ===========================
+		// 게임 종료
+		// ===========================
+		else if (input == 'q'
+			|| input == 'Q')
+		{
+			cout << endl;
+
+			cout << "게임을 종료합니다."
+				<< endl;
+
+			system("pause");
+
+			break;
+		}
+	}
 }
