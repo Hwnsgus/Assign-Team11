@@ -13,10 +13,10 @@ Character::Character(string charName) : name(charName) {
 	maxHP = 200;
 	currentHP = 200;
 	attackPower = 30;
-	defense = 30;
+	defense = 10;
 	exp = 0;
 	gold = 0;
-
+	baseAtk = attackPower;
 
 	LogManager::getInstance().addLog("캐릭터 [" + name + "] 생성 완료!(Lv.1, HP :200, ATK : 30)");
 }
@@ -102,7 +102,7 @@ void Character::gainExp(int amount) {
 		maxHP += 20;
 		attackPower += 5;
 		currentHP = maxHP;
-
+		baseAtk = attackPower;
 		LogManager::getInstance().addLog("LEVEL UP! 현재 레벨: " + to_string(level));
 
 	}

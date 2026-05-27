@@ -87,7 +87,7 @@ void Game::showMenu()
 
 		cout << " 2. 게임 로그 확인"
 			<< endl;
-
+ 
 		cout << " 3. 처치 몬스터 통계"
 			<< endl;
 
@@ -262,7 +262,6 @@ void Game::run()
 			system("cls");
 
 			Monster* currentMonster = nullptr;
-
 			// ===========================
 			// 랜덤 몬스터 생성
 			// ===========================
