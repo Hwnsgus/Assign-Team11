@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Item.h"
-#include "Character.h"
+
 
 
 class Character;
@@ -15,7 +15,7 @@ public:
 
 	AttackBoost();
 
-	void use(Character* character);
+	void use(Character* character) override;
 
 	void removeEffectAfterBattle(Character* character);
 

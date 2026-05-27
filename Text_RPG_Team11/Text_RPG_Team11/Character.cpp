@@ -3,6 +3,9 @@
 
 #include "Character.h"
 #include "LogManager.h"
+#include "Item.h"
+
+
 #include <sstream>
 #include<iostream>
 using namespace std;
@@ -17,7 +20,7 @@ Character::Character(string charName) : name(charName) {
 	defense = 30;
 	exp = 0;
 	gold = 0;
-
+	baseAtk = attackPower; //공증 버프 삭제 때 필요한 기본공격력
 
 	LogManager::getInstance().addLog("캐릭터 [" + name + "] 생성 완료! (Lv.1, HP :200, ATK :30");
 }
@@ -88,6 +91,9 @@ void Character::showStatus() const {
 }
 
 // 아이템 담당 연동 함수 (현재는 틀만 제공)
-void Character::addItem(Item* item) { /* 아이템 담당자가 구현 예정 */ }
-void Character::useItem(Item* item) { /* 아이템 담당자가 구현 예정 */ }
+void Character::addItem(Item* item)
+{
+	inventory.push_back(item);
+}
+void Character::useItem(Item* item) { item->use(this); }
 

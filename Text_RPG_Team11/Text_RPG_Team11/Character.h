@@ -16,7 +16,7 @@ private:
     int defense;
     int exp;
     int gold;
-
+    int baseAtk;
     // 게임 로그와 몬스터 처치 기록을 관리하기 위한 컨테이너
     vector<Item*> inventory;
 
@@ -33,6 +33,7 @@ public:
     int gethp() const { return currentHP; }
     int getdef() const { return defense; }
     int getatk() const { return attackPower; }
+    int getBaseAtk() const { return baseAtk; } //기본 공격력 호출
 
     void sethp(int hp);
 
