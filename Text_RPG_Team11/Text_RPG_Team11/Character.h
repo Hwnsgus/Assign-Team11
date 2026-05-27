@@ -1,9 +1,9 @@
-#pragma once
+ï»¿#pragma once
 #include <string>
 #include <vector>
 #include <map>
 using namespace std;
-class Monster; // ¸ó½ºÅÍ Å¬·¡½º Àü¹æ ¼±¾ğ
+class Monster; // ëª¬ìŠ¤í„° í´ë˜ìŠ¤ ì „ë°© ì„ ì–¸
 class Item;
 
 class Character {
@@ -17,7 +17,7 @@ private:
     int exp;
     int gold;
 
-    // °ÔÀÓ ·Î±×¿Í ¸ó½ºÅÍ Ã³Ä¡ ±â·ÏÀ» °ü¸®ÇÏ±â À§ÇÑ ÄÁÅ×ÀÌ³Ê
+    // ê²Œì„ ë¡œê·¸ì™€ ëª¬ìŠ¤í„° ì²˜ì¹˜ ê¸°ë¡ì„ ê´€ë¦¬í•˜ê¸° ìœ„í•œ ì»¨í…Œì´ë„ˆ
     vector<Item*> inventory;
 
 public:
@@ -28,7 +28,7 @@ public:
     void gainGold(int amount);
     void showStatus() const;
 
-    // ÆÀ¿øµéÀÌ ¿¬µ¿ÇÒ Getters / Setters
+    // íŒ€ì›ë“¤ì´ ì—°ë™í•  Getters / Setters
     std::string getName() const { return name; }
     int gethp() const { return currentHP; }
     int getdef() const { return defense; }
@@ -37,7 +37,7 @@ public:
     void sethp(int hp);
 
 
-    // [¾ÆÀÌÅÛ ´ã´ç ÆÀ¿ø ¿¬µ¿¿ë ÀÎÅÍÆäÀÌ½º °¡ÀÌµå]
+    // [ì•„ì´í…œ ë‹´ë‹¹ íŒ€ì› ì—°ë™ìš© ì¸í„°í˜ì´ìŠ¤ ê°€ì´ë“œ]
     void addItem(Item* item);
     void useItem(Item* item);
 };

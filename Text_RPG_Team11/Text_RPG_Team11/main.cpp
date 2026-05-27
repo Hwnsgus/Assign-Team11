@@ -3,6 +3,8 @@
 #include "Character.h"
 #include "Monster.h"
 #include "LogManager.h" // 로그 시스템 결합
+//#include <windows.h>
+
 
 using namespace std;
 
@@ -38,7 +40,10 @@ void showMenu(Character& player) {
 }
 
 int main() {
+    //SetConsoleOutputCP(65001);
+    //SetConsoleCP(65001);
     srand(static_cast<unsigned int>(time(NULL)));
+    
 
     //캐릭터 생성
     string name;

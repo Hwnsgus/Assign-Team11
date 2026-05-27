@@ -1,10 +1,10 @@
-#pragma once
+ï»¿#pragma once
 #include <string>
 #include <iostream>
 
-class Character; // Àü¹æ ¼±¾ğ (Character Çì´õ Áßº¹ ÂüÁ¶ ¹æÁö)
+class Character; // ì „ë°© ì„ ì–¸ (Character í—¤ë” ì¤‘ë³µ ì°¸ì¡° ë°©ì§€)
 
-// ¸ğµç ¸ó½ºÅÍÀÇ ºÎ¸ğ°¡ µÇ´Â ±âº» Å¬·¡½º
+// ëª¨ë“  ëª¬ìŠ¤í„°ì˜ ë¶€ëª¨ê°€ ë˜ëŠ” ê¸°ë³¸ í´ë˜ìŠ¤
 class Monster {
 public:
     Monster(std::string name, int level);
@@ -24,28 +24,64 @@ public:
     void setatk(int atk);
     void setlevel(int level);
 
-    // ¼ø¼ö °¡»ó ÇÔ¼ö: ÇÏÀ§ ¸ó½ºÅÍµéÀº ÀÌ °ø°İ ÇÔ¼ö¸¦ ¹«Á¶°Ç °¢ÀÚ ±¸ÇöÇØ¾ß ÇÔ
+    // ì¼ë°˜ ê³µê²© (ê³µí†µ)
+    void normalAttack(Character* character);
+
+    // íŠ¹ìˆ˜ ê³µê²© (ê° ëª¬ìŠ¤í„°ê°€ ê°ì êµ¬í˜„)
+    virtual void specialAttack(Character* character) = 0;
+
+    // í„´ë§ˆë‹¤ ì¼ë°˜/íŠ¹ìˆ˜ ì¤‘ í•˜ë‚˜ë¥¼ ê³¨ë¼ ê³µê²©
     virtual void attack(Character* character) = 0;
 
 protected:
-    std::string Name;
-    int Hp;
-    int Atk;
-    int Level;
+    std::string MonsterName;
+    int MonsterHp;
+    int MonsterAtk;
+    int MonsterLevel;
 };
 
 // ==========================================
-// ÇÏÀ§ ¸ó½ºÅÍ Å¬·¡½º ¼±¾ğ ¿µ¿ª (°íÈ£Áø ´Ô Ãß°¡ ÀÚ¸®)
+// í•˜ìœ„ ëª¬ìŠ¤í„° í´ë˜ìŠ¤ ì„ ì–¸ ì˜ì—­
 // ==========================================
 
+// ìŠ¬ë¼ì„ - íŠ¹ìˆ˜ê¸°: í¡ìˆ˜ (ì¤€ ë°ë¯¸ì§€ë§Œí¼ ìê¸° HP íšŒë³µ)
 class Slime : public Monster {
 public:
     Slime(std::string name, int level) : Monster(name, level) {}
-    void attack(Character* character) override; // ¼³°èµµ¿¡´Â ¼±¾ğ¸¸!
+    void specialAttack(Character* character) override;
+    void attack(Character* character) override;
 };
 
+// ì˜¤í¬ - íŠ¹ìˆ˜ê¸°: ê°•íƒ€ (ë°ë¯¸ì§€ 1.5ë°°)
+class Orc : public Monster {
+public:
+    Orc(std::string name, int level) : Monster(name, level) {}
+    void specialAttack(Character* character) override;
+    void attack(Character* character) override;
+};
+
+// ê³ ë¸”ë¦° - íŠ¹ìˆ˜ê¸°: ì•„ì´í…œ í›”ì¹˜ê¸° (ê³¨ë“œ í›”ì¹¨)
 class Goblin : public Monster {
 public:
     Goblin(std::string name, int level) : Monster(name, level) {}
+    void specialAttack(Character* character) override;
+    void attack(Character* character) override;
+};
+
+// ìŠ¤ì¼ˆë ˆí†¤ - íŠ¹ìˆ˜ê¸°: ë¶€í™œ (HP 100% íšŒë³µ, 1íšŒ ì œí•œ)
+class Skeleton : public Monster {
+public:
+    Skeleton(std::string name, int level) : Monster(name, level), hasRevived(false) {}
+    void specialAttack(Character* character) override;
+    void attack(Character* character) override;
+private:
+    bool hasRevived; // ë¶€í™œì€ 1ë²ˆë§Œ ê°€ëŠ¥
+};
+
+// ëŠ‘ëŒ€ - íŠ¹ìˆ˜ê¸°: ì—°ì†ê³µê²© (2~3íšŒ ì—°ì† ê³µê²©)
+class Wolf : public Monster {
+public:
+    Wolf(std::string name, int level) : Monster(name, level) {}
+    void specialAttack(Character* character) override;
     void attack(Character* character) override;
 };
