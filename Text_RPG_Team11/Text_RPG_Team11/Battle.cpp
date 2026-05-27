@@ -47,7 +47,7 @@ void Battle::startBattle(Character& character, Monster* monster)
             if (itemIdx > 0)
             {
                 Item* itemToUse = character.getItem(itemIdx - 1);
-                if (itemToUse == nullptr)
+                if (itemToUse != nullptr)
                 {
                     itemToUse -> use(&character);
                     LogManager::getInstance().addLog(itemToUse->getItemName() + "을(를) 사용했습니다.");
