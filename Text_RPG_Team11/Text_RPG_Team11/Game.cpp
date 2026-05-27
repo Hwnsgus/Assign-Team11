@@ -11,6 +11,7 @@
 #include "Shop.h"
 
 #include "LogManager.h"
+#include "BossMonster.h"
 
 using namespace std;
 
@@ -262,55 +263,101 @@ void Game::run()
 
 			Monster* currentMonster = nullptr;
 
-			int randomMonster;
-
-			randomMonster = rand() % 5;
-
 			// ===========================
 			// 랜덤 몬스터 생성
 			// ===========================
-			switch (randomMonster)
+
+			// 몬스터 생성 부분 수정
+
+			// ==========================================
+			// 레벨 10 이상이면 보스 등장
+			// ==========================================
+			if (player->getlevel() >= 10)
 			{
-			case 0:
-				currentMonster =
-					new Slime(
-						"야생 슬라임",
-						player->getlevel()
-					);
-				break;
+				system("cls");
 
-			case 1:
-				currentMonster =
-					new Goblin(
-						"야생 고블린",
-						player->getlevel()
-					);
-				break;
+				cout << endl;
 
-			case 2:
-				currentMonster =
-					new Orc(
-						"야생 오크",
-						player->getlevel()
-					);
-				break;
+				cout << "========================================"
+					<< endl;
 
-			case 3:
-				currentMonster =
-					new Skeleton(
-						"야생 스켈레톤",
-						player->getlevel()
-					);
-				break;
+				cout << "          !!! WARNING !!!"
+					<< endl;
 
-			case 4:
+				cout << "========================================"
+					<< endl;
+
+				cout << " 엄청난 기운이 느껴진다..."
+					<< endl;
+
+				cout << " 마왕이 등장했습니다!"
+					<< endl;
+
+				cout << "========================================"
+					<< endl;
+
+				system("pause");
+
 				currentMonster =
-					new Wolf(
-						"야생 늑대",
+					new BossMonster(
+						"마왕 벨제로드",
 						player->getlevel()
 					);
-				break;
 			}
+
+			// ==========================================
+			// 일반 몬스터
+			// ==========================================
+			else
+			{
+				int randomMonster;
+
+				randomMonster = rand() % 5;
+
+				switch (randomMonster)
+				{
+				case 0:
+					currentMonster =
+						new Slime(
+							"야생 슬라임",
+							player->getlevel()
+						);
+					break;
+
+				case 1:
+					currentMonster =
+						new Goblin(
+							"야생 고블린",
+							player->getlevel()
+						);
+					break;
+
+				case 2:
+					currentMonster =
+						new Orc(
+							"야생 오크",
+							player->getlevel()
+						);
+					break;
+
+				case 3:
+					currentMonster =
+						new Skeleton(
+							"야생 스켈레톤",
+							player->getlevel()
+						);
+					break;
+
+				case 4:
+					currentMonster =
+						new Wolf(
+							"야생 늑대",
+							player->getlevel()
+						);
+					break;
+				}
+			}
+
 
 			// ===========================
 			// 전투 시작
