@@ -73,6 +73,26 @@ void Character::takeDamage(int damage) {
 
 void Character::gainExp(int amount) {
 	exp += amount;
+	if (level == 10)
+	{
+		cout << endl;
+
+		cout << "========================================"
+			<< endl;
+
+		cout << " 이제 일반 몬스터는 상대도 안 된다!"
+			<< endl;
+
+		cout << " 보스 몬스터가 등장합니다!"
+			<< endl;
+
+		cout << "========================================"
+			<< endl;
+
+		LogManager::getInstance().addLog(
+			"레벨 10 달성!"
+		);
+	}
 
 	LogManager::getInstance().addLog(to_string(amount) + " EXP 획득(현재: " + to_string(exp) + "/100)");
 
