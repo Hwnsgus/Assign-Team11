@@ -179,27 +179,12 @@ void Shop::openShop(Character* player)
 
 			if (sellItem != nullptr)
 			{
-				int sellPrice = 0;
+				
 
 				// ===========================
 				// 판매 가격 계산
 				// ===========================
-				if (sellItem->getItemName()
-					== "체력 포션")
-				{
-					sellPrice = 15 * 0.6;
-				}
-
-				else if (sellItem->getItemName()
-					== "공격력 증가 알약")
-				{
-					sellPrice = 25 * 0.6;
-				}
-
-				else
-				{
-					sellPrice = 10;
-				}
+				int sellPrice = sellItem->getItemPrice() * 0.6;
 
 				player->gainGold(sellPrice);
 

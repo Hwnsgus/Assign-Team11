@@ -4,8 +4,9 @@
 #include "Character.h"
 
 
-Item::Item(std::string name, string sort,string E_name,int E_value)
-	:Item_name(name),Item_type(sort), effect_name(E_name), effect_value(E_value)
+Item::Item(std::string name, string sort,string E_name,int E_value,int pri)
+	:Item_name(name),Item_type(sort), effect_name(E_name),
+	effect_value(E_value),Item_Price(pri)
 {
 
 

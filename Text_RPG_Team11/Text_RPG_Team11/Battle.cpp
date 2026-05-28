@@ -6,6 +6,7 @@
 #include "Item.h"
 #include "Healthpotion.h"
 #include "AttackBoost.h"
+#include "JunkItem.h"
 #include "BossMonster.h"
 
 #include <iostream>
@@ -72,7 +73,7 @@ void Battle::startBattle(Character& character, Monster* monster)
 
 			rewardGold = rand() % 11 + 10;
 
-			character.gainExp(50);
+
 
 			character.gainGold(rewardGold);
 
@@ -93,13 +94,41 @@ void Battle::startBattle(Character& character, Monster* monster)
 			// ===========================
 			// 30% 확률 아이템 드랍
 			// ===========================
-			int itemChance;
+			int itemChance, potionChance;
 
 			itemChance = rand() % 100;
+			potionChance = rand() % 100;
 
 			if (itemChance < 30)
 			{
-				Item* dropItem = nullptr;
+				string name = monster->getname();
+
+				Item* junk = nullptr;
+
+				if (name == "야생 슬라임")
+					junk = new JunkItem("슬라임 액체", "미끌한 점액", 30);
+				else if (name == "야생 오크")
+					junk = new JunkItem("오크고기", "질긴 고기", 60);
+				else if (name == "야생 스켈레톤")
+					junk = new JunkItem("뼈조각", "부러진 뼈", 40);
+				else if (name == "야생 고블린")
+					junk = new JunkItem("몽둥이 조각", "부서진 몽둥이의 조각", 40);
+				else if (name == "야생 늑대")
+					junk = new JunkItem("질긴 가죽", "늑대의 가죽", 40);
+
+				if (junk != nullptr)
+				{
+					character.addItem(junk);
+
+					cout << "\n잡템 획득: "
+						<< junk->getItemName()
+						<< endl;
+				}
+			}
+
+			if (potionChance < 30)
+			{
+				Item* dropPotion = nullptr;
 
 				int randomItem;
 
@@ -108,22 +137,22 @@ void Battle::startBattle(Character& character, Monster* monster)
 				// 체력 포션
 				if (randomItem == 0)
 				{
-					dropItem = new HealthPotion();
+					dropPotion = new HealthPotion();
 				}
 
 				// 공격력 증가 알약
 				else
 				{
-					dropItem = new AttackBoost();
+					dropPotion = new AttackBoost();
 				}
 
-				character.addItem(dropItem);
+				character.addItem(dropPotion);
 
 				cout << endl;
 				cout << "아이템 획득!" << endl;
 
 				cout << "획득 아이템 : "
-					<< dropItem->getItemName()
+					<< dropPotion->getItemName()
 					<< endl;
 			}
 
@@ -183,15 +212,32 @@ void Battle::startBattle(Character& character, Monster* monster)
 			if (selectedItem != nullptr)
 			{
 				cout << endl;
-				cout << character.getName()
-					<< " 이(가) 아이템 사용!"
-					<< endl;
 
-				selectedItem->ShowItemInfo();
 
-				character.useItem(selectedItem);
 
-				delete selectedItem;
+				//잡템이면 사용 못하게끔 처리
+				if (!selectedItem->isUsable())
+				{
+					cout << selectedItem->getItemName()
+						<< "은(는) 사용할 수 없습니다!\n";
+					character.addItem(selectedItem);
+
+				
+				}
+				else
+				{
+					character.useItem(selectedItem);
+					selectedItem->ShowItemInfo();
+					cout << "\n" << character.getName()
+						<< " 이(가) 아이템 사용!"
+						<< endl;
+					delete selectedItem;
+				}
+					
+				
+
+
+				
 			}
 		}
 
