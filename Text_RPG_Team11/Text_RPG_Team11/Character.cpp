@@ -51,7 +51,7 @@ void Character::showInventory()
 
 	for (size_t i = 0; i < inventory.size(); i++)
 	{
-		cout << "[" << i+1 << "]" << inventory[i]->getItemName() <<"("<<inventory[i]->ItemEffect()<<")"<<endl;
+		cout << "[" << i + 1 << "]" << inventory[i]->getItemName() << "(" << inventory[i]->ItemEffect() << ")" << endl;
 	}
 }
 
@@ -60,7 +60,7 @@ Item* Character::getItem(int index)
 	if (index >= 0 && index < inventory.size())
 	{
 		Item* selected = inventory[index];
-		inventory.erase(inventory.begin()+index);
+		inventory.erase(inventory.begin() + index);
 		return selected;
 	}
 	return nullptr;
@@ -141,4 +141,14 @@ void Character::addItem(Item* item)
 	inventory.push_back(item);
 }
 
-void Character::useItem(Item* item) { item->use(this); }
+void Character::useItem(Item* item)
+{
+	if (item == nullptr)return;
+	if (!item->isUsable())
+	{
+	
+		return;
+	}
+
+	item->use(this);
+}

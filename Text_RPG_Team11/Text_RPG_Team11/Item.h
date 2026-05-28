@@ -14,10 +14,11 @@ protected:
 	string Item_type;
 	string effect_name;
 	int effect_value;
+	int Item_Price;
 	
 
 public:
-	Item(string name,string sort, string E_name, int E_value);
+	Item(string name,string sort, string E_name, int E_value, int pri);
 
 	string getItemName()
 	{
@@ -36,8 +37,14 @@ public:
 		return effect_value;
 	}
 
+	int getItemPrice()
+	{
+		return Item_Price;
+	}
+
+
 	virtual void use(Character* character) = 0;
-	
+	virtual bool isUsable() { return true; }
 	
 	
 	
