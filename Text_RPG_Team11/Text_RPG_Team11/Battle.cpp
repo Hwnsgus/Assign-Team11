@@ -21,10 +21,7 @@ void Battle::startBattle(Character& character, Monster* monster)
 {
 	cout << "========================================" << endl;
 	cout << " 전투 시작!" << endl;
-	cout << " ["
-		<< monster->getname()
-		<< "] 등장!"
-		<< endl;
+	cout << " [" << monster->getname() << "] 등장!" << endl;
 	cout << "========================================" << endl;
 
 	// ===========================
@@ -33,47 +30,29 @@ void Battle::startBattle(Character& character, Monster* monster)
 	while (true)
 	{
 		// ===========================
-		// 플레이어 사망
+		// 플레이어 사망 체크
 		// ===========================
 		if (character.gethp() <= 0)
 		{
 			cout << endl;
-			cout << character.getName()
-				<< " 이(가) 쓰러졌습니다..."
-				<< endl;
+			cout << character.getName() << " 이(가) 쓰러졌습니다..." << endl;
 
-			LogManager::getInstance().addLog(
-				character.getName()
-				+ " 사망"
-			);
-
+			LogManager::getInstance().addLog(character.getName() + " 사망");
 			break;
 		}
 
 		// ===========================
-		// 몬스터 사망
+		// 몬스터 사망 체크 (상단 루프 진입 시 혹은 몬스터 공격 후 체크용)
 		// ===========================
 		if (monster->gethp() <= 0)
 		{
 			cout << endl;
-			cout << "["
-				<< monster->getname()
-				<< "] 처치 완료!"
-				<< endl;
+			cout << "[" << monster->getname() << "] 처치 완료!" << endl;
 
-			LogManager::getInstance().recordKill(
-				monster->getname()
-			);
+			LogManager::getInstance().recordKill(monster->getname());
 
-			// ===========================
 			// 보상 지급
-			// ===========================
-			int rewardGold;
-
-			rewardGold = rand() % 11 + 10;
-
-			character.gainExp(50);
-
+			int rewardGold = rand() % 11 + 10;
 			character.gainGold(rewardGold);
 
 			bool levelup = character.gainExp(50);
@@ -85,80 +64,37 @@ void Battle::startBattle(Character& character, Monster* monster)
 				cout << "---" << endl;
 			}
 
-			cout << "---" << endl
-				<< rewardGold << " Gold 획득!" << endl
-				<< "---" << endl
-				<< endl;
+			cout << "---" << endl << rewardGold << " Gold 획득!" << endl << "---" << endl << endl;
 
-			// ===========================
 			// 30% 확률 아이템 드랍
-			// ===========================
-			int itemChance;
-
-			itemChance = rand() % 100;
-
+			int itemChance = rand() % 100;
 			if (itemChance < 30)
 			{
 				Item* dropItem = nullptr;
+				int randomItem = rand() % 2;
 
-				int randomItem;
-
-				randomItem = rand() % 2;
-
-				// 체력 포션
-				if (randomItem == 0)
-				{
-					dropItem = new HealthPotion();
-				}
-
-				// 공격력 증가 알약
-				else
-				{
-					dropItem = new AttackBoost();
-				}
+				if (randomItem == 0) dropItem = new HealthPotion();
+				else dropItem = new AttackBoost();
 
 				character.addItem(dropItem);
-
 				cout << endl;
 				cout << "아이템 획득!" << endl;
-
-				cout << "획득 아이템 : "
-					<< dropItem->getItemName()
-					<< endl;
+				cout << "획득 아이템 : " << dropItem->getItemName() << endl;
 			}
 
-			// ===========================
 			// 공격력 버프 제거
-			// ===========================
-			character.setAtk(
-				character.getBaseAtk()
-			);
-
-			break;
+			character.setAtk(character.getBaseAtk());
+			break; // 전투 종료
 		}
 
 		// ===========================
 		// 상태 출력
 		// ===========================
 		cout << endl;
-
-		cout << "========================================"
-			<< endl;
-
-		cout << "["
-			<< character.getName()
-			<< "] HP : "
-			<< character.gethp()
-			<< endl;
-
-		cout << "["
-			<< monster->getname()
-			<< "] HP : "
-			<< monster->gethp()
-			<< endl;
-
 		cout << "========================================" << endl;
-
+		cout << "[" << character.getName() << "] HP : " << character.gethp() << endl;
+		cout << "[" << monster->getname() << "] HP : " << monster->gethp() << endl;
+		cout << "========================================" << endl;
 
 		// ===========================
 		// 플레이어 턴
@@ -166,75 +102,40 @@ void Battle::startBattle(Character& character, Monster* monster)
 		cout << endl;
 		cout << "--- 플레이어 턴 ---" << endl;
 
-		// ===========================
-		// 랜덤 아이템 사용
-		// ===========================
-		int useItemChance;
-
-		useItemChance = rand() % 100;
-
-		// 30% 확률 사용
+		// 랜덤 아이템 사용 (30% 확률)
+		int useItemChance = rand() % 100;
 		if (useItemChance < 30)
 		{
-			Item* selectedItem;
-
-			selectedItem = character.getItem(0);
-
+			Item* selectedItem = character.getItem(0);
 			if (selectedItem != nullptr)
 			{
 				cout << endl;
-				cout << character.getName()
-					<< " 이(가) 아이템 사용!"
-					<< endl;
-
+				cout << character.getName() << " 이(가) 아이템 사용!" << endl;
 				selectedItem->ShowItemInfo();
-
 				character.useItem(selectedItem);
-
 				delete selectedItem;
 			}
 		}
 
-		// ===========================
 		// 플레이어 공격
-		// ===========================
-		int damage;
+		int damage = character.getatk() - (monster->getlevel() * 2);
+		if (damage <= 0) damage = 1;
 
-		damage = character.getatk() - (monster->getlevel() * 2);
-
-		if (damage <= 0)
-		{
-			damage = 1;
-		}
-
-		monster->sethp(
-			monster->gethp() - damage
-		);
+		monster->sethp(monster->gethp() - damage);
 
 		cout << endl;
+		cout << character.getName() << " 의 공격!" << endl;
+		cout << monster->getname() << " 에게 " << damage << " 데미지!" << endl;
 
-		cout << character.getName()
-			<< " 의 공격!"
-			<< endl;
-
-		cout << monster->getname()
-			<< " 에게 "
-			<< damage
-			<< " 데미지!"
-			<< endl;
-
-		// 몬스터 사망 체크
+		// ===========================
+		// 플레이어 공격 후 몬스터 상태 체크
+		// ===========================
 		if (monster->gethp() <= 0)
 		{
-
+			// 1. 보스 몬스터 사망 체크 -> 바로 엔딩
 			BossMonster* bossCheck = dynamic_cast<BossMonster*>(monster);
-
-			// ==========================================
-			// 보스 처치 시 엔딩
-			// ==========================================
 			if (bossCheck != nullptr)
 			{
-
 				cout << endl;
 				cout << "========================================" << endl;
 				cout << "          FINAL CLEAR!" << endl;
@@ -245,33 +146,33 @@ void Battle::startBattle(Character& character, Monster* monster)
 				system("pause");
 				exit(0);
 			}
-			continue;
-		}
-			// 스켈레톤이면 부활 기회 줌
+
+			// 2. 스켈레톤 부활 체크 -> 부활 성공 시 몬스터 턴을 건너뛰고 다시 플레이어 턴으로
 			Skeleton* skel = dynamic_cast<Skeleton*>(monster);
 			if (skel != nullptr)
 			{
-				skel->attack(&character);  // 부활 시도
-				if (monster->gethp() > 0) continue;  // 부활했으면 전투 계속, 플레이어 턴부터
+				skel->attack(&character);  // 팀원이 작성한 부활 시도 함수 호출
+				if (monster->gethp() > 0)
+				{
+					// 부활에 성공했다면, 아래의 사망 정산(Gold/Exp)을 하지 않고 다음 턴으로 루프 재시작
+					continue;
+				}
 			}
 
-			continue;  // 다른 몬스터면 그냥 처치 처리로
-		
-	
-		// 몬스터 턴 (살아있을 때만)
-		// ==========================================
-		monster->attack(&character);
-		
-		
-		BossMonster* bossCheck =
-			dynamic_cast<BossMonster*>(monster);
+			// 일반 몬스터가 진짜 죽은 거라면 다음 루프의 상단 '몬스터 사망 체크'에서 정산되도록 continue
+			continue;
+		}
 
-		
-		
+		// ===========================
+		// 몬스터 턴 (살아있을 때만 실행됨)
+		// ===========================
+		cout << endl;
+		cout << "--- 몬스터 턴 ---" << endl;
+		monster->attack(&character);
 	}
+
 	cout << endl;
 	cout << "전투 종료!" << endl;
-
 	system("pause");
 	system("cls");
 }
