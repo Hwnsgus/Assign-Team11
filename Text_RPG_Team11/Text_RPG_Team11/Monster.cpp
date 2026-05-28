@@ -34,7 +34,7 @@ void Monster::normalAttack(Character* character) {
     if (damage <= 0) damage = 1;
     character->sethp(character->gethp() - damage);
     cout << "* [" << MonsterName << "]의 일반 공격!\n";
-    cout << "  " << character->getName() << "에게 " << damage << " 데미지!\n";
+    cout << "* [" << character->getName() <<"]에게 " << damage << " 데미지!\n";
 }
 
 // ==========================================
@@ -50,12 +50,12 @@ void Slime::specialAttack(Character* character) {
     // 준 데미지만큼 HP 회복
     MonsterHp += damage;
     cout << "* [" << MonsterName << "]의 흡수!\n";
-    cout << "  " << character->getName() << "에게 " << damage << " 데미지!\n";
-    cout << "  [" << MonsterName << "] HP +" << damage << " 회복!\n";
+    cout << "* [" << character->getName() << "]에게 " << damage << " 데미지!\n";
+    cout << "* [" << MonsterName << "] HP +" << damage << " 회복!\n";
 }
 
 void Slime::attack(Character* character) {
-    cout << "\n--- 몬스터 턴 ---\n";
+    cout << "\n--- 몬스터 턴 ---\n\n";
     // 30% 확률로 특수공격
     if (rand() % 100 < 30) {
         specialAttack(character);
@@ -75,11 +75,11 @@ void Orc::specialAttack(Character* character) {
     if (damage <= 0) damage = 2;
     character->sethp(character->gethp() - damage);
     cout << "* [" << MonsterName << "]의 강타!\n";
-    cout << "  " << character->getName() << "에게 " << damage << " 데미지! \n";
+    cout << "* [" << character->getName() << "]에게 " << damage << " 데미지! \n";
 }
 
 void Orc::attack(Character* character) {
-    cout << "\n--- 몬스터 턴 ---\n";
+    cout << "\n--- 몬스터 턴 ---\n\n";
     // 25% 확률로 특수공격
     if (rand() % 100 < 25) {
         specialAttack(character);
@@ -102,7 +102,7 @@ void Goblin::specialAttack(Character* character) {
 }
 
 void Goblin::attack(Character* character) {
-    cout << "\n--- 몬스터 턴 ---\n";
+    cout << "\n--- 몬스터 턴 ---\n\n";
     // 40% 확률로 특수공격
     if (rand() % 100 < 40) {
         specialAttack(character);
@@ -122,7 +122,7 @@ void Skeleton::specialAttack(Character* character) {
 }
 
 void Skeleton::attack(Character* character) {
-    cout << "\n--- 몬스터 턴 ---\n";
+    cout << "\n--- 몬스터 턴 ---\n\n";
 
     // HP가 0 이하이고 아직 부활 안 했으면
     if (!hasRevived && MonsterHp <= 0) {
@@ -153,13 +153,13 @@ void Wolf::specialAttack(Character* character) {
         int damage = (getatk() - character->getdef()) / 2;
         if (damage <= 0) damage = 1;
         character->sethp(character->gethp() - damage);
-        cout << "  " << (i + 1) << "번째 할퀴기, " << character->getName() << "에게 " << damage << " 데미지!\n";
+        cout << "  " << (i + 1) << "번째 할퀴기, *[" << character->getName() << "]에게 " << damage << " 데미지!\n";
         if (character->gethp() <= 0) break; // 이미 죽으면 중단
     }
 }
 
 void Wolf::attack(Character* character) {
-    cout << "\n--- 몬스터 턴 ---\n";
+    cout << "\n--- 몬스터 턴 ---\n\n";
     // 30% 확률로 특수공격
     if (rand() % 100 < 30) {
         specialAttack(character);

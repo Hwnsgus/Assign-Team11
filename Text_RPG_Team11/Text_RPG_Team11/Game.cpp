@@ -318,7 +318,7 @@ void Game::run()
 				case 0:
 					currentMonster =
 						new Slime(
-							"야생 슬라임",
+							"슬라임",
 							player->getlevel()
 						);
 					break;
@@ -326,7 +326,7 @@ void Game::run()
 				case 1:
 					currentMonster =
 						new Goblin(
-							"야생 고블린",
+							"고블린",
 							player->getlevel()
 						);
 					break;
@@ -334,7 +334,7 @@ void Game::run()
 				case 2:
 					currentMonster =
 						new Orc(
-							"야생 오크",
+							"오크",
 							player->getlevel()
 						);
 					break;
@@ -342,7 +342,7 @@ void Game::run()
 				case 3:
 					currentMonster =
 						new Skeleton(
-							"야생 스켈레톤",
+							"스켈레톤",
 							player->getlevel()
 						);
 					break;
@@ -350,7 +350,7 @@ void Game::run()
 				case 4:
 					currentMonster =
 						new Wolf(
-							"야생 늑대",
+							"늑대",
 							player->getlevel()
 						);
 					break;

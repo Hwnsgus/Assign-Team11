@@ -124,8 +124,8 @@ void Battle::startBattle(Character& character, Monster* monster)
 		monster->sethp(monster->gethp() - damage);
 
 		cout << endl;
-		cout << character.getName() << " 의 공격!" << endl;
-		cout << monster->getname() << " 에게 " << damage << " 데미지!" << endl;
+		cout << "* [" << character.getName() << "]의 공격!" << endl;
+		cout << "* [" << monster->getname() << "]에게 " << damage << " 데미지!" << endl;
 
 		// ===========================
 		// 플레이어 공격 후 몬스터 상태 체크
@@ -167,7 +167,7 @@ void Battle::startBattle(Character& character, Monster* monster)
 		// 몬스터 턴 (살아있을 때만 실행됨)
 		// ===========================
 		cout << endl;
-		cout << "--- 몬스터 턴 ---" << endl;
+		
 		monster->attack(&character);
 	}
 
