@@ -224,7 +224,7 @@ void Battle::startBattle(Character& character, Monster* monster)
 			if (skel != nullptr)
 			{
 				skel->attack(&character);  // 부활 시도
-				if (monster->gethp() > 0) continue;  // 부활했으면 전투 계속
+				if (monster->gethp() > 0) continue;  // 부활했으면 전투 계속, 플레이어 턴부터
 			}
 
 			continue;  // 다른 몬스터면 그냥 처치 처리로

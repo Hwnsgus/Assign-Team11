@@ -96,7 +96,7 @@ void Orc::attack(Character* character) {
 
 void Goblin::specialAttack(Character* character) {
     int stolen = randomstat(5, 15);
-    //character->loseGold(stolen); // Character에 loseGold() 추가 필요
+    character->loseGold(stolen); // Character에 loseGold() 추가 필요
     cout << "* [" << MonsterName << "]이(가) 골드를 훔쳤습니다!\n";
     cout << "  " << stolen << " 골드를 잃었습니다!\n";
 }

@@ -78,7 +78,7 @@ private:
     bool hasRevived; // 부활은 1번만 가능
 };
 
-// 늑대 - 특수기: 연속공격 (2~3회 연속 공격)
+// 늑대 - 특수기: 마구할퀴기 (2~5회 연속 공격)
 class Wolf : public Monster {
 public:
     Wolf(std::string name, int level) : Monster(name, level) {}
