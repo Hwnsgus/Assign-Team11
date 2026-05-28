@@ -373,69 +373,72 @@ void Game::run()
 			// ===========================
 			delete currentMonster;
 
+
+
 			// ===========================
 			// 플레이어 생존 시
 			// 상점 입장 여부 질문
 			// ===========================
+
+
 			if (player->gethp() > 0)
 			{
-				char shopChoice;
-
-				cout << endl;
-
-				cout << "========================================"
-					<< endl;
-
-				cout << "상점에 입장하시겠습니까?"
-					<< endl;
-
-				cout << "========================================"
-					<< endl;
-
-				cout << "[Y] 상점 입장"
-					<< endl;
-
-				cout << "[N] 다음 전투 진행"
-					<< endl;
-
-				cout << "========================================"
-					<< endl;
-
-				cout << "선택 : ";
-
-				shopChoice = _getch();
-
-				// ===========================
-				// 상점 입장
-				// ===========================
-				if (shopChoice == 'Y'
-					|| shopChoice == 'y')
+				bool doneChoosing = false;
+				while (!doneChoosing)
 				{
-					Shop::openShop(player);
+					system("cls");
 
 					cout << endl;
 
-					cout << "상점 이용 완료!"
-						<< endl;
+					cout << "========================================"<< endl;
+					cout << "상점에 입장하시겠습니까?"<< endl;
+					cout << "========================================"<< endl;
 
-					cout << "전투를 다시 시작합니다!"
-						<< endl;
+					cout << "[C] 캐릭터 상태 확인" << endl;
+					cout << "[Y] 상점 입장 /";
+					cout << "  [N] 다음 전투 진행"<< endl;
+					cout << "========================================"<< endl;
 
-				}
+					cout << "선택 : ";
 
-				// ===========================
-				// 상점 스킵
-				// ===========================
-				else
-				{
-					cout << endl;
 
-					cout << "상점을 스킵했습니다!"
-						<< endl;
+					// ===========================
+					// 상점 입장
+					// ===========================
 
-					cout << "다음 전투를 진행합니다!"
-						<< endl;
+					char shopChoice = _getch();
 
+					if (shopChoice == 'c' || shopChoice == 'C')
+					{
+
+						system("cls");
+						player->showStatus();
+						system("pause");
+
+					}
+					else if (shopChoice == 'Y'|| shopChoice == 'y')
+					{
+						Shop::openShop(player);
+						doneChoosing = true;
+					}
+
+					else if (shopChoice == 'n' || shopChoice == 'N') {
+						doneChoosing = true;
+					}
+
+					// ===========================
+					// 상점 스킵
+					// ===========================
+					else
+					{
+						cout << endl;
+
+						cout << "상점을 스킵했습니다!"
+							<< endl;
+						system("puase");
+						break;
+
+					}
 				}
 			}
 		}

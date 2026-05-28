@@ -76,11 +76,18 @@ void Battle::startBattle(Character& character, Monster* monster)
 
 			character.gainGold(rewardGold);
 
-			cout << endl;
-			cout << "EXP 50 획득!" << endl;
+			bool levelup = character.gainExp(50);
+			if (levelup) {
+				cout << endl;
+				cout << "---" << endl;
+				cout << " LEVEL UP!" << endl;
+				cout << " 현재 레벨 : " << character.getlevel() << endl;
+				cout << "---" << endl;
+			}
 
-			cout << rewardGold
-				<< " Gold 획득!"
+			cout << "---" << endl
+				<< rewardGold << " Gold 획득!" << endl
+				<< "---" << endl
 				<< endl;
 
 			// ===========================
@@ -150,8 +157,8 @@ void Battle::startBattle(Character& character, Monster* monster)
 			<< monster->gethp()
 			<< endl;
 
-		cout << "========================================"
-			<< endl;
+		cout << "========================================" << endl;
+
 
 		// ===========================
 		// 플레이어 턴
@@ -219,6 +226,27 @@ void Battle::startBattle(Character& character, Monster* monster)
 		// 몬스터 사망 체크
 		if (monster->gethp() <= 0)
 		{
+
+			BossMonster* bossCheck = dynamic_cast<BossMonster*>(monster);
+
+			// ==========================================
+			// 보스 처치 시 엔딩
+			// ==========================================
+			if (bossCheck != nullptr)
+			{
+
+				cout << endl;
+				cout << "========================================" << endl;
+				cout << "          FINAL CLEAR!" << endl;
+				cout << "========================================" << endl;
+				cout << " 마왕을 처치했습니다!" << endl;
+				cout << " 세계에 평화가 찾아왔습니다!" << endl;
+				cout << "========================================" << endl;
+				system("pause");
+				exit(0);
+			}
+			continue;
+		}
 			// 스켈레톤이면 부활 기회 줌
 			Skeleton* skel = dynamic_cast<Skeleton*>(monster);
 			if (skel != nullptr)
@@ -228,7 +256,7 @@ void Battle::startBattle(Character& character, Monster* monster)
 			}
 
 			continue;  // 다른 몬스터면 그냥 처치 처리로
-		}
+		
 	
 		// 몬스터 턴 (살아있을 때만)
 		// ==========================================
@@ -238,41 +266,12 @@ void Battle::startBattle(Character& character, Monster* monster)
 		BossMonster* bossCheck =
 			dynamic_cast<BossMonster*>(monster);
 
-
-		// 보스 처치 시 엔딩
-		// ==========================================
-		if (bossCheck != nullptr)
-		{
-			cout << endl;
-
-			cout << "========================================"
-				<< endl;
-
-			cout << "          FINAL CLEAR!"
-				<< endl;
-
-			cout << "========================================"
-				<< endl;
-
-			cout << " 마왕을 처치했습니다!"
-				<< endl;
-
-			cout << " 세계에 평화가 찾아왔습니다!"
-				<< endl;
-
-			cout << "========================================"
-				<< endl;
-
-			system("pause");
-
-			exit(0);
-		}
-
-
 		
 		
 	}
-
 	cout << endl;
 	cout << "전투 종료!" << endl;
+
+	system("pause");
+	system("cls");
 }

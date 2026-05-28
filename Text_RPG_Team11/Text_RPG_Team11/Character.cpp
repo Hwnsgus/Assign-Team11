@@ -71,7 +71,7 @@ void Character::takeDamage(int damage) {
 	if (currentHP < 0) currentHP = 0;
 }
 
-void Character::gainExp(int amount) {
+bool Character::gainExp(int amount) {
 	exp += amount;
 	if (level == 10)
 	{
@@ -104,8 +104,9 @@ void Character::gainExp(int amount) {
 		currentHP = maxHP;
 		baseAtk = attackPower;
 		LogManager::getInstance().addLog("LEVEL UP! 현재 레벨: " + to_string(level));
-
+		return true;
 	}
+	return false;
 }
 
 void Character::gainGold(int amount) {
