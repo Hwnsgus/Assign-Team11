@@ -1,4 +1,4 @@
-// ===========================
+﻿// ===========================
 // BossMonster.cpp
 // ===========================
 #include <iostream>
@@ -15,13 +15,15 @@ using namespace std;
 BossMonster::BossMonster(string name, int level)
 	: Monster(name, level)
 {
-	MonsterHp =
+	int calculatedHP = 
 		randomstat(level * 30,
 			level * 45);
 
-	MonsterAtk =
+	int calculatedAtk =
 		randomstat(level * 10,
 			level * 15);
+
+	sethp(calculatedHP);
 }
 
 // ==========================================
