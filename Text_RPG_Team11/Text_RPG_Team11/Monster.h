@@ -68,7 +68,7 @@ public:
     void attack(Character* character) override;
 };
 
-// 스켈레톤 - 특수기: 부활 (HP 100% 회복, 1회 제한)
+// 스켈레톤 - 특수기: 부활 (HP 50% 회복, 1회 제한)
 class Skeleton : public Monster {
 public:
     Skeleton(std::string name, int level) : Monster(name, level), hasRevived(false) {}
@@ -78,7 +78,7 @@ private:
     bool hasRevived; // 부활은 1번만 가능
 };
 
-// 늑대 - 특수기: 연속공격 (2~3회 연속 공격)
+// 늑대 - 특수기: 마구할퀴기 (2~5회 연속 공격)
 class Wolf : public Monster {
 public:
     Wolf(std::string name, int level) : Monster(name, level) {}

@@ -96,15 +96,15 @@ void Orc::attack(Character* character) {
 
 void Goblin::specialAttack(Character* character) {
     int stolen = randomstat(5, 15);
-    //character->loseGold(stolen); // Character에 loseGold() 추가 필요
+    character->loseGold(stolen); // Character에 loseGold() 추가 필요
     cout << "* [" << MonsterName << "]이(가) 골드를 훔쳤습니다!\n";
     cout << "  " << stolen << " 골드를 잃었습니다!\n";
 }
 
 void Goblin::attack(Character* character) {
     cout << "\n--- 몬스터 턴 ---\n";
-    // 35% 확률로 특수공격
-    if (rand() % 100 < 35) {
+    // 40% 확률로 특수공격
+    if (rand() % 100 < 40) {
         specialAttack(character);
     }
     else {
@@ -114,7 +114,7 @@ void Goblin::attack(Character* character) {
 
 // ==========================================
 // 스켈레톤 - 특수기: 부활
-// HP 0 이하일 때 HP 100% 부활 (1회 한정)
+// HP 0 이하일 때 HP 50% 부활 (1회 한정)
 // ==========================================
 
 void Skeleton::specialAttack(Character* character) {
@@ -128,7 +128,7 @@ void Skeleton::attack(Character* character) {
     if (!hasRevived && MonsterHp <= 0) {
         // 30% 확률로 부활
         if (rand() % 100 < 30) {
-            MonsterHp = randomstat(MonsterLevel * 20, MonsterLevel * 30); // HP 100% 회복
+            MonsterHp = randomstat(MonsterLevel * 10, MonsterLevel * 15); // HP 50% 회복
             hasRevived = true;
             cout << "* [" << MonsterName << "]이(가) 달그락대며 부활했습니다!\n";
         }

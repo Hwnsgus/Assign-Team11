@@ -28,6 +28,7 @@ public:
     bool gainExp(int amount);
     void gainGold(int amount);
     void showStatus() const;
+    void loseGold(int amount);
 
 
     // 팀원들이 연동할 Getters / Setters
