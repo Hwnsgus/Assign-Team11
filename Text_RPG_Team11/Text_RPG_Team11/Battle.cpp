@@ -6,6 +6,7 @@
 #include "Item.h"
 #include "Healthpotion.h"
 #include "AttackBoost.h"
+#include "BossMonster.h"
 
 #include <iostream>
 #include <cstdlib>
@@ -228,8 +229,42 @@ void Battle::startBattle(Character& character, Monster* monster)
 
 			continue;  // 다른 몬스터면 그냥 처치 처리로
 		}
+		BossMonster* bossCheck =
+			dynamic_cast<BossMonster*>(monster);
 
 		// 몬스터 턴 (살아있을 때만)
+		// ==========================================
+		// 보스 처치 시 엔딩
+		// ==========================================
+		if (bossCheck != nullptr)
+		{
+			cout << endl;
+
+			cout << "========================================"
+				<< endl;
+
+			cout << "          FINAL CLEAR!"
+				<< endl;
+
+			cout << "========================================"
+				<< endl;
+
+			cout << " 마왕을 처치했습니다!"
+				<< endl;
+
+			cout << " 세계에 평화가 찾아왔습니다!"
+				<< endl;
+
+			cout << "========================================"
+				<< endl;
+
+			system("pause");
+
+			exit(0);
+		}
+		// ===========================
+		// 몬스터 턴
+		// ===========================
 		monster->attack(&character);
 
 		
